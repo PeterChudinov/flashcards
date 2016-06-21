@@ -1470,3 +1470,39 @@ Started GET "/assets/index.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde45
 
 
 Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-21 11:40:18 +0300
+
+
+Started GET "/" for ::1 at 2016-06-21 11:45:27 +0300
+Processing by IndexController#index as HTML
+  Rendered index/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 31ms (Views: 29.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/index.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/application.self-790d057af78731e2c26fcd94bb3b1b59611714a2e1fefbe0b150bb57c7340241.css?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/bootstrap.min.self-66fe84b79c6d5db31355296a8c9627d232721fe3ac3c31f3554ccc7e999279b6.css?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/bootstrap-theme.min.self-6f2f4ae8073eeed25f7f4c1fe221c20b00fe8aea594a38fa55e240d6d6a2e51d.css?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/bootstrap.min.self-d475868eedd65d9ab19f96e8574a2c8ce91ba7d64b8bbfa47cd55591a956ed67.js?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/index.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2016-06-21 11:45:27 +0300
+
+
+Started GET "/assets/application.self-f8806224e027f3e3f0138ea9ce99319e298dfdb323304d1f1be6eae8e8c74724.js?body=1" for ::1 at 2016-06-21 11:45:27 +0300
