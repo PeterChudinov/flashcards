@@ -1,0 +1,25 @@
+<h1>Карточки</h1>
+
+<table>
+  <thead>
+  	<tr>
+	  <th>На английском</th>
+	  <th>На русском</th>
+	  <th>Последняя проверка</th>
+  	</tr>
+  </thead>
+
+  <tbody>
+  	<% @cards.each do |c| %>
+  	  <tr>
+  	    <td><%= c.original_text %></td>
+  	    <td><%= c.translated_text %></td>
+  	    <td><%= c.review_date.month %>/<%= c.review_date.day %>/<%= c.review_date.year %></td>
+  	  </tr>
+  	<% end %>
+  </tbody>
+</table>
+
+<br>
+
+<p>На сегодня все!</p>
