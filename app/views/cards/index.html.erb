@@ -14,7 +14,7 @@
   	  <tr>
   	    <td><%= c.original_text %></td>
   	    <td><%= c.translated_text %></td>
-  	    <td><%= c.review_date.month %>/<%= c.review_date.day %>/<%= c.review_date.year %></td>
+  	    <td><%= get_formated_time(c.review_date) %></td>
   	  </tr>
   	<% end %>
   </tbody>

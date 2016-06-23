@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'cards/index'
+  resources :cards, only: [:index]
 
   root 'home#index'
 
