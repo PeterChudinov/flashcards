@@ -6,6 +6,7 @@
 	  <th>На английском</th>
 	  <th>На русском</th>
 	  <th>Последняя проверка</th>
+    <th></th><th></th>
   	</tr>
   </thead>
 
@@ -15,6 +16,8 @@
   	    <td><%= c.original_text %></td>
   	    <td><%= c.translated_text %></td>
   	    <td><%= get_formated_time(c.review_date) %></td>
+        <td><%= link_to 'Изменить', edit_card_path(c) %></td>
+        <td><%= link_to 'Удалить', c, method: :delete %></td>
   	  </tr>
   	<% end %>
   </tbody>

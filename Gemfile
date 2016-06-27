@@ -31,6 +31,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Weird shit going on
 gem 'rake', '~> 11.2.2'
 
+# Simple Form for forms
+gem 'simple_form'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
