@@ -24,6 +24,9 @@ class CardsController < ApplicationController
   end
 
   def update
+    params.permit!
+    @card = Card.find(params[:id])
+    @card.update(params[:card])
     redirect_to cards_path
   end
 
