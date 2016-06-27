@@ -6,12 +6,13 @@ class Card < ActiveRecord::Base
 
   validates :original_text, presence: true
   validates :translated_text, presence: true
-
   validates :review_date, presence: true
 
-  validate do
-    if (original_text == translated_text)
-      errors.add(:base, 'Оригинальный и переведенный текст не могут быть одинаковыми')
+  validate :texts_are_not_matching
+
+  def texts_are_not_matching
+    if original_text.downcase.strip == translated_text.downcase.strip
+      errors.add(:original_text, 'Оригинальный и переведенный текст не могут быть одинаковыми')
     end
   end
 end
