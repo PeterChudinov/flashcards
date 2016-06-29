@@ -1,6 +1,6 @@
 <h1>Редактирование карточки</h1>
 
-<%= simple_form_for @card, method: :put, action: :update do |f| %>
+<%= simple_form_for @card, method: :put, url: card_path do |f| %>
   <p>
     <%= f.label :original_text %><br>
     <%= f.text_field :original_text %>

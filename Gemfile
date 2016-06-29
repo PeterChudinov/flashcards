@@ -3,8 +3,6 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
 # Use postgres as the databas for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
@@ -30,6 +28,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Weird shit going on
 gem 'rake', '~> 11.2.2'
+# Use UnicodeUtils to work with cyrilic text
+gem 'unicode_utils'
 
 # Simple Form for forms
 gem 'simple_form'

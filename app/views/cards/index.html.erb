@@ -11,13 +11,13 @@
   </thead>
 
   <tbody>
-  	<% @cards.each do |c| %>
+  	<% @cards.each do |card| %>
   	  <tr>
-  	    <td><%= c.original_text %></td>
-  	    <td><%= c.translated_text %></td>
-  	    <td><%= get_formated_time(c.review_date) %></td>
-        <td><%= link_to 'Изменить', edit_card_path(c) %></td>
-        <td><%= link_to 'Удалить', c, method: :delete %></td>
+  	    <td><%= card.original_text %></td>
+  	    <td><%= card.translated_text %></td>
+  	    <td><%= formated_time(card.review_date) %></td>
+        <td><%= link_to 'Изменить', edit_card_path(card) %></td>
+        <td><%= link_to 'Удалить', card, method: :delete %></td>
   	  </tr>
   	<% end %>
   </tbody>

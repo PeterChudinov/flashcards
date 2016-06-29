@@ -11,7 +11,10 @@ class Card < ActiveRecord::Base
   validate :texts_are_not_matching
 
   def texts_are_not_matching
-    if original_text.downcase.strip == translated_text.downcase.strip
+    ot = UnicodeUtils::downcase(original_text)
+    tt = UnicodeUtils::downcase(translated_text)
+
+    if ot.strip == tt.strip
       errors.add(:original_text, 'Оригинальный и переведенный текст не могут быть одинаковыми')
     end
   end
