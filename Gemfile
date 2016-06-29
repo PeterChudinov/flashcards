@@ -30,6 +30,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'rake', '~> 11.2.2'
 # Use UnicodeUtils to work with cyrilic text
 gem 'unicode_utils'
+# RuboCop I don't even know why
+gem 'rubocop', '~> 0.41.1', require: false
 
 # Simple Form for forms
 gem 'simple_form'

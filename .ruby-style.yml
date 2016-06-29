@@ -36,6 +36,9 @@ Style/IfUnlessModifier:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#if-as-a-modifier
   Enabled: false
   MaxLineLength: 80
+Style/LimitLinesTo80Characters:
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide#80-character-limits
+  Enabled: false
 Style/OptionHash:
   Description: Don't use option hashes when you can use keyword arguments.
   Enabled: false
