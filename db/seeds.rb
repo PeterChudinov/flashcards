@@ -81,7 +81,10 @@ end
 hashes.each do |h|
   @active_hash = h
   puts "attempting to put '#{@active_hash[:original_text]}' into cards..."
-  Card.create([{ original_text: @active_hash[:original_text] }, { translated_text: @active_hash[:translated_text] }])
+  Card.create(
+  	original_text: @active_hash[:original_text],
+    translated_text: @active_hash[:translated_text]
+    )
   puts "'#{@active_hash[:original_text]}' put into Cards"
 end
 
