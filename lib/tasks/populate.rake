@@ -31,8 +31,8 @@ end
 
 
 def get_words(page)
-  german_words = Array.new()
-  english_words = Array.new()
+  german_words = Array.new
+  english_words = Array.new
 
   page.css("tr[class=rowA]/td[class=bigLetter]").each do |word|
     german_words << word.text

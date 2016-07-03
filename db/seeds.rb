@@ -10,8 +10,8 @@ require 'open-uri'
 
 words_page = Nokogiri::HTML(open("http://languagedaily.com/learn-german/vocabulary/common-german-words"))
 
-german_words = Array.new()
-english_words = Array.new()
+german_words = Array.new
+english_words = Array.new
 
 words_page.css("tr[class=rowA]/td[class=bigLetter]").each do |word|
   german_words.push(word.text)
@@ -22,11 +22,11 @@ words_page.css("tr[class=rowB]/td[class=bigLetter]").each do |word|
 end
 
 words_page.css("tr[class=rowA]/td[3]").each do |word|
-	english_words.push(word.text)
+  english_words.push(word.text)
 end
 
 words_page.css("tr[class=rowB]/td[3]").each do |word|
-	english_words.push(word.text)
+  english_words.push(word.text)
 end
 
 hashes = Array.new
@@ -37,7 +37,7 @@ german_words.each do |w|
   hashes.push(h)
   @active_hash = h
   Card.create(
-  	original_text: @active_hash[:original_text],
+    original_text: @active_hash[:original_text],
     translated_text: @active_hash[:translated_text]
     )
 end
