@@ -17,9 +17,10 @@ def loop_through_pages
   loop do
     id += 1
     begin
+      puts "trying page id #{id}"
       words_page = Nokogiri::HTML(open("http://languagedaily.com/learn-german/vocabulary/common-german-words-#{id}"))
     rescue OpenURI::HTTPError => e
-      if e.message == 'no more pages to parse...'
+      if e.message == '404 Resourse not found'
         break
       end
     end
@@ -34,19 +35,22 @@ def get_words(page)
   english_words = Array.new()
 
   page.css("tr[class=rowA]/td[class=bigLetter]").each do |word|
-    german_words.push(word.text)
-    english_words.push(page.css("tr[class=rowA]/td[3]")[german_words.index(word.text)].text)
+    german_words << word.text
+    if page.css("tr[class=rowA]/td[3]")[german_words.index(word.text)].nil?
+      next
+    else
+      english_words << page.css("tr[class=rowA]/td[3]")[german_words.index(word.text)].text
+    end
   end
 
   page.css("tr[class=rowB]/td[class=bigLetter]").each do |word|
-    german_words.push(word.text)
-    english_words.push(page.css("tr[class=rowB]/td[3]")[german_words.index(word.text)].text)
+    german_words << word.text
+    if page.css("tr[class=rowB]/td[3]")[german_words.index(word.text)].nil?
+      next
+    else
+      english_words << page.css("tr[class=rowB]/td[3]")[german_words.index(word.text)].text
+    end
   end
-
-#, tr[class=rowB]/td[class=bigLetter]
-  #page.css("tr[class=rowA]/td[class=3], tr[class=rowB]/td[3]").each do |word|
-   # english_words.push(word.text)
-  #end
 
   hashes = Array.new
   german_words.each do |w|
@@ -54,6 +58,9 @@ def get_words(page)
 
     h[:original_text] = w
     h[:translated_text] = english_words[german_words.index(w)]
+    if h[:original_text].nil? || h[:translated_text].nil?
+      next
+    end
     hashes.push(h)
     @active_hash = h
     puts h
