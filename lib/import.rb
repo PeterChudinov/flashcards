@@ -14,8 +14,8 @@ def get_words_new(page)
   words = []
   w_id = 0
   page.css('tr.rowA, tr.rowB').each do |j|
-    puts words << 
-    { original_text: j.css('td[2]').text,
+    puts words << {
+      original_text: j.css('td[2]').text,
       translated_text: j.css('td[3]').text
     }
     puts @card = Card.create(
