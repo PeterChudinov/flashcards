@@ -2,8 +2,10 @@ require 'open-uri'
 
 class Import
   def self.run
-    get_words_new(Nokogiri::HTML(open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words")))
-    get_words_new(Nokogiri::HTML(open("http://www.languagedaily.com/learn-german/vocabulary/most-common-german-words-2")))
+    get_words_new(Nokogiri::HTML(
+      open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words")))
+    get_words_new(Nokogiri::HTML(
+      open("http://www.languagedaily.com/learn-german/vocabulary/most-common-german-words-2")))
     loop_through_pages
   end
 end
@@ -25,18 +27,17 @@ def get_words_new(page)
 end
 
 def loop_through_pages
-p_id = 2
-loop do
-  p_id += 1
-  begin
-    puts "trying page id #{p_id}"
-    words_page = Nokogiri::HTML(open("http://languagedaily.com/learn-german/vocabulary/common-german-words-#{p_id}"))
-  rescue OpenURI::HTTPError => e
-    if e.message == '404 Resourse not found'
-      break
+  p_id = 2
+  loop do
+    p_id += 1
+    begin
+      puts "trying page id #{p_id}"
+      words_page = Nokogiri::HTML(open("http://languagedaily.com/learn-german/vocabulary/common-german-words-#{p_id}"))
+    rescue OpenURI::HTTPError => e
+      if e.message == '404 Resource not found'
+        break
+      end
     end
-  end
-  get_words_new(words_page)
-
+    get_words_new(words_page)
   end
 end
