@@ -3,9 +3,9 @@ require 'open-uri'
 class Import
   def self.run
     get_words_new(Nokogiri::HTML(
-      open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words")))
+        open("http://www.languagedaily.com/learn-german/vocabulary/common-german-words")))
     get_words_new(Nokogiri::HTML(
-      open("http://www.languagedaily.com/learn-german/vocabulary/most-common-german-words-2")))
+        open("http://www.languagedaily.com/learn-german/vocabulary/most-common-german-words-2")))
     loop_through_pages
   end
 end
