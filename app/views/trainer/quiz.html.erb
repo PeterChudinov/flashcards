@@ -1,0 +1,7 @@
+<%= form_tag do |f| %>
+  <center>
+    <p><%= label_tag 'Давай вспомним перевод слова ' %> <%= @card_text %></p>
+    <p><%= text_field_tag 'response' %></p>
+    <p><%= button_to 'Проверить', root_path, method: :post, params: { :card_id => @card_id } %></p>
+  </center>
+<% end %>

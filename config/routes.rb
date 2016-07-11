@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root 'home#index'
-
   resources :cards
-  post 'trainer/test'
+  post '/' => 'home#grade_quiz'
 end
