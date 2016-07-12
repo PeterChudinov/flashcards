@@ -18,7 +18,7 @@ class Import
         puts "trying page id #{p_id}"
         words_page = Nokogiri::HTML(open("http://languagedaily.com/learn-german/vocabulary/common-german-words-#{p_id}"))
       rescue OpenURI::HTTPError => e
-        if e.message == '404 Resource not found'
+        if e.message.eql? '404 Resource not found'
           break
         end
       end

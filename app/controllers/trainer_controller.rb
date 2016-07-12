@@ -1,6 +1,14 @@
 class TrainerController < ApplicationController
-  def quiz
-    card_id = get_quiz_eligible_card_id
-    @card = Card.find(card_id)
+  def review
+    @card = Card.find(params[:id])
+    @response = params[:response]
+
+    if UnicodeUtils::downcase(@response).strip.eql? UnicodeUtils::downcase(@card[:original_text]).strip
+      @card.update(:review_date => (Date.today + 3))
+      flash[:notice] = "Верно!"
+    else
+      flash[:notice] = "Неверно!"
+    end
+    redirect_to root_path
   end
 end

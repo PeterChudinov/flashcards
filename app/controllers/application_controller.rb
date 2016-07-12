@@ -3,14 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def get_quiz_eligible_card_id
-
-    @card = Card.order('RANDOM()').first
-
-    while @card[:review_date] > Date.today
-      @card = Card.order('RANDOM()').first
-    end
-
+  def get_review_eligible_card_id
+    @card = Card.where(["review_date < ?", Date.today]).order('RANDOM()').first
     card_id = @card[:id]
   end
 end
