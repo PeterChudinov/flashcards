@@ -18,4 +18,16 @@ class Card < ActiveRecord::Base
       errors.add(:original_text, 'Оригинальный и переведенный текст не могут быть одинаковыми')
     end
   end
+
+  def self.get_review_card
+    self.where(["review_date < ?", Date.today]).order('RANDOM()').first
+  end
+
+  def check_answer?(response)
+    UnicodeUtils::downcase(response).strip == UnicodeUtils::downcase(original_text).strip
+  end
+
+  def touch_review_date!
+    update_attribute(:review_date, (Date.today + 3))
+  end
 end
