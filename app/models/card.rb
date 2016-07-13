@@ -22,4 +22,12 @@ class Card < ActiveRecord::Base
   def self.get_review_card
     self.where(["review_date < ?", Date.today]).order('RANDOM()').first
   end
+
+  def check_answer?(response)
+    UnicodeUtils::downcase(response).strip.eql? UnicodeUtils::downcase(original_text).strip
+  end
+
+  def touch_review_date!
+    update_attribute(:review_date, (Date.today + 3))
+  end
 end

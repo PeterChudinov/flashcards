@@ -3,8 +3,9 @@ class TrainerController < ApplicationController
     @card = Card.find(params[:id])
     @response = params[:response]
 
-    if UnicodeUtils::downcase(@response).strip.eql? UnicodeUtils::downcase(@card[:original_text]).strip
-      @card.update(:review_date => (Date.today + 3))
+    result = @card.check_answer?(params[:response])
+    if result
+      @card.touch_review_date!
       flash[:notice] = "Верно!"
     else
       flash[:notice] = "Неверно!"
