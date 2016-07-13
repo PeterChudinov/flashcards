@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   
   def index
-    @cards = Card.all
+    @cards = Card.all.page(params[:page]).per(20)
   end
 
   def create

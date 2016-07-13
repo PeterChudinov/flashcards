@@ -32,6 +32,8 @@ gem 'rake', '~> 11.2.2'
 gem 'unicode_utils'
 # RuboCop I don't even know why
 gem 'rubocop', '~> 0.41.1', require: false
+# kaminari for paginating
+gem 'kaminari'
 
 # Simple Form for forms
 gem 'simple_form'

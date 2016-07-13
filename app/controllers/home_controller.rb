@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @card = Card.find(get_review_eligible_card_id)
+    @card = Card.get_review_card
     render 'trainer/quiz'
   end
 end
