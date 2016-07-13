@@ -24,7 +24,7 @@ class Card < ActiveRecord::Base
   end
 
   def check_answer?(response)
-    UnicodeUtils::downcase(response).strip.eql? UnicodeUtils::downcase(original_text).strip
+    UnicodeUtils::downcase(response).strip == UnicodeUtils::downcase(original_text).strip
   end
 
   def touch_review_date!
