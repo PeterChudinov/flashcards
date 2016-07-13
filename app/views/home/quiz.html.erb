@@ -1,4 +1,4 @@
-<%= form_for @card, url: trainer_review_path(@card), method: :post do |f| %>
+<%= simple_form_for @card, url: trainer_review_path(@card), method: :post do |f| %>
   <center>
     <p><%= label_tag 'Давай вспомним перевод слова: ' %> <%= @card[:translated_text] %></p>
     <p><%= text_field_tag 'response' %></p>
