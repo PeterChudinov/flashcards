@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pp'
 
 RSpec.describe Card, type: :model do
   #pending "add some examples to (or delete) #{__FILE__}"
@@ -9,16 +10,23 @@ RSpec.describe Card, type: :model do
     #card.should have(:no).errors_on(:original_text)
   #end
 
-  #it "creates a valid instance" do
-    specify { expect(card.original_text).to eq('привет') }
-    specify { expect(card.translated_text).to eq('hi') }
-  #end
+  it 'creates a valid instance' do
+    expect { expect(card.original_text).to eq('привет') }
+    expect { expect(card.translated_text).to eq('hi') }
+  end
 
-  #it "checks the translation" do
-    specify { expect(card.check_answer?(card.translated_text)).to eq(false) }
-  #end
+  describe '#check_answer?' do
+    context 'the answer is right' do
+      specify { expect(card.check_answer?('привет')).to eq(true) }
+    end
+    context 'the answer is wrong' do
+      specify { expect(card.check_answer?('poka')).to eq(false) }
+    end
+  end
 
-  #it "updates the review date after successful review" do
-    specify { expect(card.touch_review_date!).to eq(true) }
-  #end
+  describe '#touch_review_date!' do
+    it 'should set review date to 3 days ahead' do
+     expect { card.touch_review_date! }.to change{ card.review_date }.to(Date.today + 3)
+    end
+  end
 end

@@ -56,3 +56,7 @@ log/production.log
 config/database.yml
 
 log/test.log
+
+config/database.yml
+
+config/database.yml
