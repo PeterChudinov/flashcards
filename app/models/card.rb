@@ -31,6 +31,6 @@ class Card < ActiveRecord::Base
   end
 
   def touch_review_date!
-    update_attribute(:review_date, (Date.today + 3))
+    update_attribute(:review_date, (Date.today + 3.days))
   end
 end
