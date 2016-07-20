@@ -23,7 +23,7 @@ RSpec.describe Card, type: :model do
 
   describe '#touch_review_date!' do
     it 'should set review date to 3 days ahead' do
-     expect { @card.touch_review_date! }.to change{ @card.review_date }.to(Date.today + 3.days)
+     expect { @card.touch_review_date! }.to change{ @card.review_date }.to(3.days.from_now.end_of_day)
     end
   end
 end

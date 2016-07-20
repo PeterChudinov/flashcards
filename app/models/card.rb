@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
 
   before_validation(on: :create) do
-    self.review_date = Date.today + 3.days	
+    self.review_date = 3.days.from_now.end_of_day	
   end
 
   validates :original_text, presence: true
@@ -31,6 +31,6 @@ class Card < ActiveRecord::Base
   end
 
   def touch_review_date!
-    update_attribute(:review_date, (Date.today + 3.days))
+    update_column(:review_date, (3.days.from_now.end_of_day))
   end
 end
