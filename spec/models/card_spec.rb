@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Card, type: :model do
-
   before do
     @card = FactoryGirl.create(:card)
   end
@@ -23,7 +22,7 @@ RSpec.describe Card, type: :model do
 
   describe '#touch_review_date!' do
     it 'should set review date to 3 days ahead' do
-     expect { @card.touch_review_date! }.to change{ @card.review_date }.to(3.days.from_now.end_of_day)
+     expect { @card.touch_review_date! }.to change { @card.review_date }.to(3.days.from_now.end_of_day)
     end
   end
 end
