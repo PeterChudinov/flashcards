@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
 
   before do
-    @card = Card.create(:original_text => ' привет', :translated_text => 'HI ')
+    @card = FactoryGirl.create(:card)
   end
 
   it 'creates a valid instance' do
@@ -15,7 +15,7 @@ RSpec.describe Card, type: :model do
     context 'the answer is right' do
       specify { expect(@card.check_answer?('привет')).to eq(true) }
     end
-    
+
     context 'the answer is wrong' do
       specify { expect(@card.check_answer?('poka')).to eq(false) }
     end
