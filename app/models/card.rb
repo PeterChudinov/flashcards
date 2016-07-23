@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
 
   before_validation(on: :create) do
-    self.review_date = Date.today + 3.days	
+    self.review_date = 3.days.from_now.end_of_day
   end
 
   validates :original_text, presence: true
@@ -11,10 +11,13 @@ class Card < ActiveRecord::Base
   validate :texts_are_not_matching
 
   def texts_are_not_matching
-    ot = UnicodeUtils::downcase(original_text)
-    tt = UnicodeUtils::downcase(translated_text)
+    ot = UnicodeUtils::downcase(original_text.strip)
+    tt = UnicodeUtils::downcase(translated_text.strip)
 
-    if ot.strip == tt.strip
+    update_attribute(:original_text, ot)
+    update_attribute(:translated_text, tt)
+
+    if ot == tt
       errors.add(:original_text, 'Оригинальный и переведенный текст не могут быть одинаковыми')
     end
   end
@@ -28,6 +31,6 @@ class Card < ActiveRecord::Base
   end
 
   def touch_review_date!
-    update_attribute(:review_date, (Date.today + 3))
+    update_column(:review_date, 3.days.from_now.end_of_day)
   end
 end

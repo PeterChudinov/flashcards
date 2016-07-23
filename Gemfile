@@ -32,7 +32,7 @@ gem 'rake', '~> 11.2.2'
 gem 'unicode_utils'
 # RuboCop I don't even know why
 gem 'rubocop', '~> 0.41.1', require: false
-# kaminari for paginating
+# Kaminari for paginating
 gem 'kaminari'
 
 # Simple Form for forms
@@ -47,6 +47,12 @@ gem 'simple_form'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  # RSpec for testing
+  gem 'rspec-rails', '~> 3.4'
+  # FactoryGirl to populate test db
+  gem 'factory_girl_rails'
+  # Capybara to 
+  gem 'capybara'
 end
 
 group :development do
