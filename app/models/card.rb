@@ -33,4 +33,9 @@ class Card < ActiveRecord::Base
   def touch_review_date!
     update_column(:review_date, 3.days.from_now.end_of_day)
   end
+
+  # For testing purpouses only
+  def set_test_review_date!
+    update_column(:review_date, 5.days.ago.end_of_day)
+  end
 end
