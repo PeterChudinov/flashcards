@@ -1,11 +1,22 @@
 require 'capybara/rspec'
 
 Capybara.describe 'card trainer', :type => :feature do
+  before :each do
+    Card.create(:original_text => 'привет', :translated_text => 'hi', :review_date => '2015-02-03')
+  end
+  
   it 'checks if the user can do the card quiz correctly' do
-    visit '/'
+    visit root_path
     fill_in 'response', :with => 'привет'
     click_button 'Проверить'
     expect(page).to have_content 'Верно!'
+  end
+
+  it 'checks if the user can do the card quiz incorrectly' do
+    visit root_path
+    fill_in 'response', :with => 'не знаю'
+    click_button 'Проверить'
+    expect(page).to have_content 'Неверно!'
   end
 end
 
