@@ -25,4 +25,10 @@ RSpec.describe Card, type: :model do
       expect { @card.touch_review_date! }.to change { @card.review_date }.to(3.days.from_now.end_of_day)
     end
   end
+
+  describe '#set_test_review_date!' do
+    it 'should set review date to 5 days ago' do
+      expect { @card.set_test_review_date! }.to change { @card.review_date }.to(5.days.ago.end_of_day)
+    end
+  end
 end

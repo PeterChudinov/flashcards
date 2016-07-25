@@ -51,7 +51,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   # FactoryGirl to populate test db
   gem 'factory_girl_rails'
-  # Capybara to 
+  # Capybara to test user behaviour
   gem 'capybara'
 end
 
