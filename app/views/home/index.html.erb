@@ -4,7 +4,7 @@
       <center>
         <p><%= label_tag 'Давай вспомним перевод слова: ' %> <%= @card[:translated_text] %></p>
         <p><%= text_field_tag 'response' %></p>
-        <p><%= button_to 'Проверить' %></p>
+        <p><%= f.submit 'Проверить' %></p>
       </center>
     <% end %>
 
