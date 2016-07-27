@@ -1,9 +1,10 @@
 require 'capybara/rspec'
 
 Capybara.describe 'card trainer', :type => :feature do
+  let(:user) { FactoryGirl.create(:user) }
 
   before :example do
-    @card = FactoryGirl.create(:card)
+    @card = FactoryGirl.create(:card, user: user)
     @card.set_test_review_date!
   end
   

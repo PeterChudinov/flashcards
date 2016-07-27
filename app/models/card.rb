@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
+  belongs_to :user
 
   before_validation(on: :create) do
     self.review_date = 3.days.from_now.end_of_day
@@ -9,6 +10,8 @@ class Card < ActiveRecord::Base
   validates :review_date, presence: true
 
   validate :texts_are_not_matching
+
+  validates :user_id, presence: true
 
   def texts_are_not_matching
     ot = UnicodeUtils::downcase(original_text.strip)
