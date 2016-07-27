@@ -22,10 +22,10 @@ ActiveRecord::Schema.define(version: 20160726135344) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.date     "review_date"
-    t.integer  "users_id"
+    t.integer  "user_id"
   end
 
-  add_index "cards", ["users_id"], name: "index_cards_on_users_id", using: :btree
+  add_index "cards", ["user_id"], name: "index_cards_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

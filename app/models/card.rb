@@ -11,7 +11,7 @@ class Card < ActiveRecord::Base
 
   validate :texts_are_not_matching
 
-  validates :users_id, presence: true
+  validates :user_id, presence: true
 
   def texts_are_not_matching
     ot = UnicodeUtils::downcase(original_text.strip)

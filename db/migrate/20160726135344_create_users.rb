@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration
     end
 
     change_table :cards do |t|
-      t.belongs_to :users, index: true
+      t.belongs_to :user, index: true
     end
   end
 end

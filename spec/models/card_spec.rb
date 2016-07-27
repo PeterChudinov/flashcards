@@ -4,7 +4,7 @@ RSpec.describe Card, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
   before do
-    @card = FactoryGirl.create(:card, users_id: user.id)
+    @card = FactoryGirl.create(:card, user: user)
   end
 
   it 'creates a valid instance' do
