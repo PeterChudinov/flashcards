@@ -1,5 +1,5 @@
 class Card < ActiveRecord::Base
-  has_and_belongs_to_many :users
+  belongs_to :user
 
   before_validation(on: :create) do
     self.review_date = 3.days.from_now.end_of_day
