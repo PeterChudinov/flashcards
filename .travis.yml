@@ -6,3 +6,6 @@ services:
 before_script:
   - cp config/database.travis.yml config/database.yml
   - psql -c 'create database flashcards_test;' -U postgres
+addons:
+  code_climate:
+      repo_token: 2c1a9cc4f7f3a6732adbc86bafd3096fc93136beaf8994f25713eff16d8be5a8
