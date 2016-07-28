@@ -36,7 +36,8 @@ class Import
       }
       puts @card = Card.create(
         original_text: words[w_id][:original_text],
-        translated_text: words[w_id][:translated_text]
+        translated_text: words[w_id][:translated_text],
+        user_id: 1
       )
       w_id += 1
     end

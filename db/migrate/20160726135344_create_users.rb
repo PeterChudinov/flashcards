@@ -6,9 +6,5 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-
-    change_table :cards do |t|
-      t.belongs_to :user, index: true
-    end
   end
 end

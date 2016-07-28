@@ -14,6 +14,12 @@
         <ul class="navigation-links">
           <li><%= link_to 'Все карточки', cards_path %></li>
           <li><%= link_to 'Добавить карточку', new_card_path %></li>
+          <% if current_user %>
+            <li><%= link_to 'Выйти', logout_path, method: :post %></li>
+          <% else %>
+            <li><%= link_to 'Войти', sign_in_path %></li>
+            <li><%= link_to 'Регистрация', users_path %></li>
+          <% end %>
         </ul>
       </header>
     </div>
