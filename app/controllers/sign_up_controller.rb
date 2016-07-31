@@ -1,4 +1,6 @@
 class SignUpController < ApplicationController
+  skip_before_filter :require_signin
+
   def new
     @user = User.new
   end

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   get 'users' => 'users#index', :as => 'user'
 
-  get 'signin' => 'sessions#new', :as => 'sign_in'
+  get 'signin' => 'sessions#new', :as => 'signin'
   post 'login' => 'sessions#create', :as => 'login'
   post 'logout' => 'sessions#destroy', :as => 'logout'
 end

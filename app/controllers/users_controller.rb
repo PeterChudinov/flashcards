@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_signin
+  
   def index
     @users = User.all
   end
