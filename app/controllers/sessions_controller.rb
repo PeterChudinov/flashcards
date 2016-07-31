@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def create
     if @user = login(params[:email], params[:password])
       redirect_back_or_to root_path
-      flash[:notice] = 'Вы вошли как #{params[:email]}'
+      flash[:notice] = "Вы вошли как #{@user.email}"
     else
       flash[:notice] = 'Логин или пароль неверны'
       render 'new'

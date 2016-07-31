@@ -1,17 +1,19 @@
 class UsersController < ApplicationController
-  def new
-    @user = User.new
+  def index
+    @users = User.all
   end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save!
-      auto_login(@user)
-      redirect_back_or_to root_path
-      flash[:notice] = 'Регистрация успешна!'
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_back_or_to profile_settings(@user)
+      flash[:notice] = 'Профиль успешно обновлен'
     else
-      render 'new'
-      flash[:error] = @user.errors.full_messages
+      redirect_to :action => :edit
     end
   end
 
