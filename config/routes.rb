@@ -7,10 +7,7 @@ Rails.application.routes.draw do
   get 'signup' => 'sign_up#new', :as => 'signup'
   post 'signup_create' => 'sign_up#create', :as => 'create_user'
 
-  get 'profile/:id/edit' => 'users#edit', :as => 'profile_settings'
-  patch 'profile/:id' => 'users#update'
-
-  get 'users' => 'users#index', :as => 'user'
+  resources :users, only: [:show, :edit, :update]
 
   get 'signin' => 'sessions#new', :as => 'signin'
   post 'login' => 'sessions#create', :as => 'login'

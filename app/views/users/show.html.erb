@@ -1,0 +1,8 @@
+<p>Привет, <%= @user.email %></p>
+
+<p><b>Ваша почта:</b> <%= @user.email %></p>
+<p><b>Ваш пароль:</b> <%= @user.password %></p>
+
+<br>
+
+<p><%= link_to 'Изменить профиль', edit_user_path(@user) %></p>

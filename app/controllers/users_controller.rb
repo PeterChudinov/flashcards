@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   skip_before_filter :require_signin
-  
-  def index
-    @users = User.all
+
+  def show
+    @user = current_user
   end
 
   def edit
@@ -11,8 +11,8 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    if @user.update(user_params)
-      redirect_back_or_to profile_settings(@user)
+    if @user.update!(user_params  )
+      redirect_back_or_to user_path(@user)
       flash[:notice] = 'Профиль успешно обновлен'
     else
       redirect_to :action => :edit
