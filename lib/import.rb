@@ -22,13 +22,18 @@ class Import
           break
         end
       end
-      parse_page(words_page)
+      if parse_page(words_page).nil?
+        break
+      end
     end
   end
 
   def parse_page(page)
     words = []
     w_id = 0
+    if page.nil?
+      return nil
+    end
     page.css('tr.rowA, tr.rowB').each do |j|
       puts words << {
         original_text: j.css('td[2]').text,

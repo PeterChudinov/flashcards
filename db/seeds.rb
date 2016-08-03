@@ -9,3 +9,5 @@
 require './lib/import.rb'
 
 Import.run
+
+Rake::Task['tossup'].invoke
