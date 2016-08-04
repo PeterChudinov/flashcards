@@ -26,6 +26,7 @@ class Import
         break
       end
     end
+    create_users
   end
 
   def parse_page(page)
@@ -46,6 +47,26 @@ class Import
       )
       w_id += 1
     end
+  end
+
+  def create_users
+    @user1 = User.new
+    @user1.email = 'first@last.com'
+    @user1.password = '123qwe'
+    @user1.password_confirmation = '123qwe'
+    @user1.save!
+
+    @user2 = User.new
+    @user2.email = 'second@last.com'
+    @user2.password = '123qwe'
+    @user2.password_confirmation = '123qwe'
+    @user2.save!
+
+    @user3 = User.new
+    @user3.email = 'third@last.com'
+    @user3.password = '123qwe'
+    @user3.password_confirmation = '123qwe'
+    @user3.save!
   end
 
 end
