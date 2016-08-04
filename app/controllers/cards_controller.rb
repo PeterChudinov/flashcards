@@ -1,4 +1,5 @@
 class CardsController < ApplicationController
+  before_filter :require_signin
   
   def index
     @cards = current_user.cards.all.page(params[:page]).per(20)
