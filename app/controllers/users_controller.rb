@@ -5,11 +5,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    if @user.external?
+      redirect_to user_path(@user)
+      flash[:notice] = 'Опция недоступна, вы регистрировались через Твиттер'
+    end
   end
 
   def update
     @user = current_user
-    if @user.update!(user_params  )
+    if @user.update!(user_params)
       redirect_back_or_to user_path(@user)
       flash[:notice] = 'Профиль успешно обновлен'
     else
