@@ -1,5 +1,5 @@
 class SignUpController < ApplicationController
-  skip_before_filter :require_signin
+  skip_before_action :require_signin
 
   def new
     @user = User.new
@@ -10,11 +10,11 @@ class SignUpController < ApplicationController
 
     if @user.save!
       auto_login(@user)
-      redirect_back_or_to root_path
       flash[:notice] = 'Регистрация успешна!'
+      redirect_back_or_to root_path
     else
-      render 'new'
       flash[:error] = @user.errors.full_messages
+      render 'new'
     end
   end
 

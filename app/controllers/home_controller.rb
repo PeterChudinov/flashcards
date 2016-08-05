@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :require_signin
+  before_action :require_signin
 
   def index
     @card = current_user.cards.get_review_card

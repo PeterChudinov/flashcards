@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_filter :require_signin
+  skip_before_action :require_signin
 
   def new
     @user = User.new

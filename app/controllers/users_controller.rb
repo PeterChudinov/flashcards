@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  skip_before_filter :require_signin
 
   def show
     @user = current_user
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
       redirect_back_or_to user_path(@user)
       flash[:notice] = 'Профиль успешно обновлен'
     else
-      redirect_to :action => :edit
+      render :action => :edit
     end
   end
 

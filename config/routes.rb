@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   post 'trainer/:id/review' => 'trainer#review', as: 'trainer_review'
 
   get 'signup' => 'sign_up#new', :as => 'signup'
-  post 'signup_create' => 'sign_up#create', :as => 'create_user'
+  post 'signup' => 'sign_up#create', :as => 'create_user'
 
   resources :users, only: [:show, :edit, :update]
 
