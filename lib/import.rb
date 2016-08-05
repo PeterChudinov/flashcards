@@ -68,5 +68,4 @@ class Import
     @user3.password_confirmation = '123qwe'
     @user3.save!
   end
-
 end

@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
+    - "config/initializers/sorcery.rb"
   UseCache: false
 Metrics/LineLength:
   Max: 99

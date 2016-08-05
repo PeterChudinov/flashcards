@@ -5,10 +5,9 @@ class ApplicationController < ActionController::Base
   before_action :require_signin
 
   private
+  
   def require_signin
-    unless current_user
-      redirect_to signin_path
-    end
+    redirect_to signin_path unless current_user and return
   end
 
   def user
