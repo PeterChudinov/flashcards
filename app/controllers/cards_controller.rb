@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   
   def index
-    @cards = current_user.cards.all.page(params[:page]).per(20)
+    @cards = current_user.cards.all.page(params[:page]).order(:review_date).reverse_order.per(20)
   end
 
   def create
@@ -40,6 +40,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text)
+    params.require(:card).permit(:original_text, :translated_text, :image)
   end
 end

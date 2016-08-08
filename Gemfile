@@ -40,6 +40,9 @@ gem "sorcery"
 # Simple Form for forms
 gem 'simple_form'
 
+# Paperclip to attach card images
+gem "paperclip", "~> 5.0.0"
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

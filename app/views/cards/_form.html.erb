@@ -13,6 +13,14 @@
   </p>
 
   <p>
+    <p>
+      <b>Current image:</b>
+      <%= image_tag @card.image.url(:medium) %>
+    </p>
+    <%= f.input :image, as: :file %>
+  </p>
+
+  <p>
     <%= f.submit %>
   </p>
 <% end %>
