@@ -8,7 +8,7 @@ class TrainerController < ApplicationController
       @card.touch_review_date!
       flash[:notice] = "Верно!"
     else
-      flash[:notice] = "Неверно!"
+      flash[:notice] = "Неверно, надо '#{@card.original_text}'"
     end
     redirect_to root_path
   end

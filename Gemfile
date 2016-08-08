@@ -34,6 +34,8 @@ gem 'unicode_utils'
 gem 'rubocop', '~> 0.41.1', require: false
 # Kaminari for paginating
 gem 'kaminari'
+# Sorcery for auth
+gem "sorcery"
 
 # Simple Form for forms
 gem 'simple_form'
@@ -53,6 +55,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Capybara to test user behaviour
   gem 'capybara'
+  # Codeclimate button
+  gem "codeclimate-test-reporter", require: nil
 end
 
 group :development do

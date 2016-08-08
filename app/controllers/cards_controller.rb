@@ -1,11 +1,11 @@
 class CardsController < ApplicationController
   
   def index
-    @cards = Card.all.page(params[:page]).per(20)
+    @cards = current_user.cards.all.page(params[:page]).per(20)
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.new(card_params)
     if @card.save
       redirect_to cards_path
     else
@@ -14,15 +14,15 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
 
   def edit
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def update
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
     if @card.update(card_params)
       redirect_to cards_path
     else
@@ -31,14 +31,15 @@ class CardsController < ApplicationController
   end
 
   def destroy
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
     if @card.destroy!
       redirect_to cards_path, notice: 'Карточка удалена!'
     end
   end
 
   private
-    def card_params
-      params.require(:card).permit(:original_text, :translated_text)
-    end
+
+  def card_params
+    params.require(:card).permit(:original_text, :translated_text)
+  end
 end
