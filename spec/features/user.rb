@@ -15,6 +15,16 @@ Capybara.describe 'user sign up', :type => :feature do
     expect(page).to have_content 'Регистрация успешна!'
   end
 
+  it "checks if user can't sign up if password validation fails" do
+    visit root_path
+    click_link 'Регистрация'
+    fill_in 'user_email', with: 'test.test@example.com'
+    fill_in 'user_password', with: 'qw'
+    fill_in 'user_password_confirmation', with: 'qw'
+    click_button 'Create User'
+    expect(page).to have_content '["Password is too short (minimum is 3 characters)"]'
+  end
+
   it 'checks if user can update their password' do
     # begin login block
     visit root_path

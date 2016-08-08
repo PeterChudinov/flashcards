@@ -6,9 +6,10 @@ class CardsController < ApplicationController
 
   def create
     @card = current_user.cards.new(card_params)
-    if @card.save
+    if @card.save!
       redirect_to cards_path
     else
+      flash[:error] = @card.errors.full_messages
       redirect_to new_card_path
     end
   end

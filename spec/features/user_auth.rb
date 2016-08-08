@@ -29,4 +29,15 @@ Capybara.describe 'user sign up', :type => :feature do
     click_link 'Выйти'
     expect(page).to have_content 'Вы успешно вышли'
   end
+
+  it "checks if user can't login if the password is wrong" do
+    # begin login block
+    visit root_path
+    fill_in 'email', with: 'first.last@example.com'
+    fill_in 'password', with: '123456x'
+    click_button 'Login'
+    # end login block
+
+    expect(page).to have_content 'Логин или пароль неверны'
+  end
 end
