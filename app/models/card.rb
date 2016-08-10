@@ -1,7 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :user
 
-  has_attached_file :image, styles: {medium: "300x300#"}
+  has_attached_file :image, styles: {medium: "300x300#", thumb: "20x20#"}
   validates_attachment :image,
     content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }
 
