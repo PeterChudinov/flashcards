@@ -22,6 +22,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
+# Figaro for environmental variables
+gem 'figaro'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,8 +42,9 @@ gem "sorcery"
 # Simple Form for forms
 gem 'simple_form'
 
-# Paperclip to attach card images
+# Paperclip and AWS to attach card images
 gem "paperclip", "~> 5.0.0"
+gem 'aws-sdk'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
