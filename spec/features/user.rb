@@ -7,7 +7,7 @@ Capybara.describe 'user sign up', :type => :feature do
 
   it 'checks if user can sign up' do
     visit root_path
-    click_link 'Регистрация'
+    click_link 'Sign up'
     fill_in 'user_email', with: 'test.test@example.com'
     fill_in 'user_password', with: '123456'
     fill_in 'user_password_confirmation', with: '123456'
@@ -17,7 +17,7 @@ Capybara.describe 'user sign up', :type => :feature do
 
   it "checks if user can't sign up if password validation fails" do
     visit root_path
-    click_link 'Регистрация'
+    click_link 'Sign up'
     fill_in 'user_email', with: 'test.test@example.com'
     fill_in 'user_password', with: 'qw'
     fill_in 'user_password_confirmation', with: 'qw'
@@ -34,13 +34,13 @@ Capybara.describe 'user sign up', :type => :feature do
     # end login block
 
     click_link 'first.last@example.com'
-    click_link 'Изменить профиль'
+    click_link 'Update profile'
     fill_in 'user_password', with: 'MyN3wP4$$wd'
     fill_in 'user_password_confirmation', with: 'MyN3wP4$$wd'
     click_button 'Update User'
 
     expect(page).to have_content 'Профиль успешно обновлен'
-    click_link 'Выйти'
+    click_link 'Log out'
     
     visit root_path
     fill_in 'email', with: 'first.last@example.com'

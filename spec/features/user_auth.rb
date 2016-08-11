@@ -26,7 +26,7 @@ Capybara.describe 'user sign up', :type => :feature do
     click_button 'Login'
     # end login block
 
-    click_link 'Выйти'
+    click_link 'Log out'
     expect(page).to have_content 'Вы успешно вышли'
   end
 
