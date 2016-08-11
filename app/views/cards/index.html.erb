@@ -1,11 +1,12 @@
-<h1>Карточки</h1>
+<h1><%= t('views.card.index.title') %></h1>
 
 <table>
   <thead>
   	<tr>
-	  <th>На английском</th>
-	  <th>На русском</th>
-	  <th>Последняя проверка</th>
+    <th><%= t('views.card.index.image') %></th>
+	  <th><%= t('views.card.index.original') %></th>
+	  <th><%= t('views.card.index.translated') %></th>
+	  <th><%= t('views.card.index.last_review') %></th>
     <th></th><th></th>
   	</tr>
   </thead>
@@ -17,8 +18,8 @@
   	    <td><%= card.original_text %></td>
   	    <td><%= card.translated_text %></td>
   	    <td><%= formated_time(card.review_date) %></td>
-        <td><%= link_to 'Изменить', edit_card_path(card) %></td>
-        <td><%= link_to 'Удалить', card, method: :delete %></td>
+        <td><%= link_to t('views.card.index.edit'), edit_card_path(card) %></td>
+        <td><%= link_to t('views.card.index.delete'), card, method: :delete %></td>
   	  </tr>
   	<% end %>
   </tbody>

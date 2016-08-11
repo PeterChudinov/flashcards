@@ -3,15 +3,14 @@
     <% if @card %>
       <%= simple_form_for @card, url: trainer_review_path(@card), method: :post do |f| %>
         <center>
-          <p><%= label_tag 'Давай вспомним перевод слова: ' %> <%= @card[:translated_text] %></p>
+          <p><%= label_tag t('views.home.trainer.quiz') %> <%= @card[:translated_text] %></p>
           <p><%= image_tag @card.image.url(:medium) %></p>
           <p><%= f.input 'response', as: :fake %></p>
-          <p><%= f.submit 'Проверить' %></p>
-        </center>
+          <p><%= f.submit t('views.home.trainer.submit') %></p>
       <% end %>
     <% else %>
-      <p>Карточки кончились, подожди немного</p>
+          <p><%= t('views.home.trainer.no_more_cards') %></p>
     <% end %>
-
+        </center>
   </section>
 </body>

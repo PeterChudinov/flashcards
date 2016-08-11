@@ -14,7 +14,7 @@
 
   <p>
     <p>
-      <b>Current image:</b>
+      <b><%= t('activerecord.attributes.card.current_image') %></b>
       <%= image_tag @card.image.url(:medium) %>
     </p>
     <%= f.input :image, as: :file %>

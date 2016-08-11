@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flashcards</title>
+  <title><%= t('application.title') %></title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -10,17 +10,19 @@
   <section id="container">
     <div class = "navbar navbar-default navbar-fixed-top">
       <header class="clearfix">
-        <h1><%= link_to 'Флэшкарточкер', root_path %></h1>
+        <h1><%= link_to t('application.title'), root_path %></h1>
         <ul class="navigation-links">
-          <li><%= link_to 'Все карточки', cards_path %></li>
-          <li><%= link_to 'Добавить карточку', new_card_path %></li>
+          <li><%= link_to t('application.all_cards'), cards_path %></li>
+          <li><%= link_to t('application.add_card'), new_card_path %></li>
           <% if current_user %>
             <li><%= link_to "#{current_user.email}", user_path(current_user) %>
-            <li><%= link_to 'Выйти', logout_path, method: :post %></li>
+            <li><%= link_to t('application.logout'), logout_path, method: :post %></li>
           <% else %>
-            <li><%= link_to 'Войти', signin_path %></li>
-            <li><%= link_to 'Регистрация', signup_path %></li>
+            <li><%= link_to t('application.login'), signin_path %></li>
+            <li><%= link_to t('application.signup'), signup_path %></li>
           <% end %>
+          <li><%= link_to image_tag('http://emojipedia-us.s3.amazonaws.com/cache/10/38/10384722ade1f4c981d730a23d1e181c.png', size: "24"), locale: 'en' %>
+          <li><%= link_to image_tag('http://pix.iemoji.com/lg33/0193.png', size: "24"), locale: 'ru' %>
         </ul>
       </header>
     </div>

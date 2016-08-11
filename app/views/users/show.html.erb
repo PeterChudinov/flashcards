@@ -1,8 +1,6 @@
-<p>Привет, <%= @user.email %></p>
-
-<p><b>Ваша почта:</b> <%= @user.email %></p>
-<p><b>Ваш пароль:</b> <%= @user.password %></p>
+<p><%= t('views.user.show.hi') %> <%= @user.email %></p>
+<p><b><%= t('views.user.show.your_email') %></b> <%= @user.email %></p>
 
 <br>
 
-<p><%= link_to 'Изменить профиль', edit_user_path(@user) %></p>
+<p><%= link_to t('views.user.show.edit_profile'), edit_user_path(@user) %></p>
