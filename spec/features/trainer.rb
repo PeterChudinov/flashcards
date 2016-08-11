@@ -14,7 +14,7 @@ Capybara.describe 'card trainer', :type => :feature do
     click_button 'Login'
     # End login block
   end
-  
+
   it 'checks if the user can do the card quiz correctly' do
     visit root_path
     fill_in 'response', with: 'привет'
