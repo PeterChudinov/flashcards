@@ -1,14 +1,15 @@
 class CardsController < ApplicationController
   
   def index
-    @cards = current_user.cards.all.page(params[:page]).per(20)
+    @cards = current_user.cards.all.page(params[:page]).order(:review_date).reverse_order.per(20)
   end
 
   def create
     @card = current_user.cards.new(card_params)
-    if @card.save
+    if @card.save!
       redirect_to cards_path
     else
+      flash[:error] = @card.errors.full_messages
       redirect_to new_card_path
     end
   end
@@ -40,6 +41,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text)
+    params.require(:card).permit(:original_text, :translated_text, :image)
   end
 end

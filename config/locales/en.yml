@@ -1,3 +1,59 @@
+en:
+  hello: 'Hi'
+  application:
+    title: 'Flashcards'
+    all_cards: 'All cards'
+    add_card: 'Add a card'
+    login: 'Log in'
+    signup: 'Sign up'
+    logout: 'Log out'
+  views:
+    card:
+      edit:
+        title: 'Edit card'
+      index:
+        title: 'Cards'
+        image: 'Image'
+        original: 'In German'
+        translated: 'In English'
+        last_review: 'Last review'
+        edit: 'Edit'
+        delete: 'Delete'
+      new:
+        title: 'New card'
+    home:
+      trainer:
+        quiz: "Let's test this word: "
+        submit: 'Check'
+        no_more_cards: 'No more cards for now, wait until tomorrow'
+    user:
+      form:
+        login_message: 'Log in'
+        login_with_twitter: 'Log in using Twitter'
+        profile_settings: 'Profile settings for '
+      show:
+        hi: 'Hi, '
+        your_email: 'Your email: '
+        edit_profile: 'Update profile settings'
+  activerecord:
+    models:
+      card:
+        one: 'card'
+        few: 'cards'
+        many: 'cards'
+    attributes:
+      card:
+        original_text: 'Original text'
+        translated_text: 'Translated text'
+        current_image: 'Current image'
+        image: 'Upload an image'
+        notice:
+          delete: 'Card successfuly deleted'
+      user:
+        email: 'Email'
+        password: 'Password'
+        password_confirmation: 'Password confirmation'
+
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other
 # than English, add the necessary files in this directory.
@@ -18,6 +74,3 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
-en:
-  hello: "Hello world"

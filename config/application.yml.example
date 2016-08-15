@@ -1,0 +1,4 @@
+development:
+  aws_access_key_id: XXXXXXXX
+  aws_secret_access_key: XXXXXXX
+  aws_region: random

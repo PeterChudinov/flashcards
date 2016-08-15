@@ -56,3 +56,12 @@ build-iPhoneSimulator/
 /log/test.log
 
 /config/database.yml
+
+# Ignore application configuration
+/config/application.yml
+
+public/system/cards/images/000/000/065/medium/dog.jpg
+
+public/system/cards/images/000/000/065/thumb/dog.jpg
+
+public/system/cards/images/000/000/065/original/dog.jpg

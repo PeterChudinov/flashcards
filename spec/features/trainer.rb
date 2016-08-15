@@ -14,14 +14,18 @@ Capybara.describe 'card trainer', :type => :feature do
     click_button 'Login'
     # End login block
   end
-  
-  it 'checks if user can create a card' do
+
+  it 'checks if the user can do the card quiz correctly' do
     visit root_path
-    click_link 'Add a card'
-    fill_in 'card_original_text', with: 'hund'
-    fill_in 'card_translated_text', with: 'dog'
-    attach_file 'card_image', "#{Rails.root}/spec/fixtures/dog.jpg"
-    click_button 'Create card'
-    expect(page).to have_content 'hund'
+    fill_in 'response', with: 'привет'
+    click_button 'Check'
+    expect(page).to have_content 'Верно!'
+  end
+
+  it 'checks if the user can do the card quiz incorrectly' do
+    visit root_path
+    fill_in 'response', with: 'не знаю'
+    click_button 'Check'
+    expect(page).to have_content "Неверно, надо 'привет'"
   end
 end

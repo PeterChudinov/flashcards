@@ -1,0 +1,55 @@
+ru:
+  hello: 'Привет'
+  application:
+    title: 'Флешкарточкер'
+    all_cards: 'Все карточки'
+    add_card: 'Добавить карточку'
+    login: 'Войти'
+    signup: 'Регистрация'
+    logout: 'Выйти'
+  views:
+    card:
+      edit:
+        title: 'Изменить карточку'
+      index:
+        title: 'Карточки'
+        image: 'Изображение'
+        original: 'На немецком'
+        translated: 'На английском'
+        last_review: 'Последняя проверка'
+        edit: 'Изменить'
+        delete: 'Удалить'
+      new:
+        title: 'Новая карточка'
+    home:
+      trainer:
+        quiz: 'Давай вспомним перевод слова: '
+        submit: 'Проверить'
+        no_more_cards: 'Карточки кончились, подожди немного'
+    user:
+      form:
+        login_message: 'Войдите в систему'
+        login_with_twitter: 'Войти через Twitter'
+        profile_settings: 'Настройки профиля для '
+      show:
+        hi: 'Привет, '
+        your_email: 'Ваша почта: '
+        edit_profile: 'Изменить профиль'
+  activerecord:
+    models:
+      card:
+        one: 'карточка'
+        few: 'карточки'
+        many: 'карточек'
+    attributes:
+      card:
+        original_text: 'Оригинальный текст'
+        translated_text: 'Переведенный текст'
+        current_image: 'Текущее изображение'
+        image: 'Загрузить изображение'
+        notice:
+          delete: 'Карточка удалена!'
+      user:
+        email: 'Почта'
+        password: 'Пароль'
+        password_confirmation: 'Подтверждения пароля'
