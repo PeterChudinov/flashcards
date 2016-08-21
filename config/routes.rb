@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'decks/choose'
+
+  get 'decks/show'
+
+  get 'decks/new'
+
+  get 'decks/update'
+
+  get 'decks/delete'
+
   get 'oauths/oauth'
 
   get 'oauths/callback'

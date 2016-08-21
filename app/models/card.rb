@@ -1,5 +1,6 @@
 class Card < ActiveRecord::Base
   belongs_to :user
+  belongs_to :deck
 
   before_validation(on: :create) do
     self.review_date = 3.days.from_now.end_of_day
