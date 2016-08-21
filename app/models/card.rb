@@ -1,5 +1,6 @@
 class Card < ActiveRecord::Base
   belongs_to :user
+  belongs_to :deck
 
   has_attached_file :image, styles: { medium: "300x300#", thumb: "20x20#" }
   validates_attachment :image,
