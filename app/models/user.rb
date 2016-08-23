@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :cards
+  has_many :decks
   has_many :authentications, :dependent => :destroy
   accepts_nested_attributes_for :authentications
 
@@ -14,4 +15,8 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   attr_accessor :current_user
+
+  def current_deck
+    Deck.find(current_deck_id)
+  end
 end

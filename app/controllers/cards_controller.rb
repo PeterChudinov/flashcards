@@ -16,15 +16,19 @@ class CardsController < ApplicationController
 
   def new
     @card = current_user.cards.new
+    @decks = current_user.decks.all
   end
 
   def edit
     @card = current_user.cards.find(params[:id])
+    @decks = current_user.decks.all
   end
 
   def update
     @card = current_user.cards.find(params[:id])
+    @card.deck_id = params[:deck_id]
     if @card.update(card_params)
+      @card.deck = params[:deck]
       redirect_to cards_path
     else
       redirect_to :action => :edit
@@ -41,6 +45,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :image)
+    params.require(:card).permit(:original_text, :translated_text, :deck_id, :image)
   end
 end

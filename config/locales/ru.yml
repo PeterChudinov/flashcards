@@ -7,7 +7,16 @@ ru:
     login: 'Войти'
     signup: 'Регистрация'
     logout: 'Выйти'
+    decks: 'Колоды'
   views:
+    decks:
+      choose:
+        new_deck: 'Новая колода'
+      show:
+        add_card: 'Добавить карточку'
+      switch:
+        using: 'Вы используете'
+        as_main_deck: 'в качестве основной колоды'
     card:
       edit:
         title: 'Изменить карточку'

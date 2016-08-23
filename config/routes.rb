@@ -1,22 +1,18 @@
 Rails.application.routes.draw do
-
-  get 'decks/choose'
-
-  get 'decks/show'
-
-  get 'decks/new'
-
-  get 'decks/update'
-
-  get 'decks/delete'
-
+  root 'home#index'
+  
   get 'oauths/oauth'
-
   get 'oauths/callback'
 
-  root 'home#index'
   resources :cards
   post 'trainer/:id/review' => 'trainer#review', as: 'trainer_review'
+
+  get 'decks' => 'decks#choose', as: 'decks'
+  get 'decks/new' => 'decks#new', as: 'new_deck'
+  post 'decks' => 'decks#create'
+  get 'decks/:id', to: 'decks#show', as: 'deck'
+  get 'decks/:id/edit', to: 'decks#edit', as: 'edit_deck'
+  post 'decks/switch/:id', to: 'decks#switch', as: 'switch_deck'
 
   get 'signup' => 'sign_up#new', :as => 'signup'
   post 'signup' => 'sign_up#create', :as => 'create_user'

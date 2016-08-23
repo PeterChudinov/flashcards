@@ -1,2 +1,7 @@
 <h1>Decks#choose</h1>
 <p>Find me in app/views/decks/choose.html.erb</p>
+<% @decks.each do |deck| %>
+  <li><%= link_to deck.name, switch_deck_path(deck), method: :post %></li>
+<% end %>
+
+<%= link_to t('decks.new_deck'), new_deck_path %>

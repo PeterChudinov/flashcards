@@ -13,6 +13,10 @@
   </p>
 
   <p>
+    <%= f.input :deck_id, collection: @decks %>
+  </p>
+
+  <p>
     <p>
       <b><%= t('activerecord.attributes.card.current_image') %></b>
       <%= image_tag @card.image.url(:medium) %>
