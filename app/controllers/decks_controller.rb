@@ -1,5 +1,5 @@
 class DecksController < ApplicationController
-  def choose
+  def index
     @decks = current_user.decks.all
   end
 
@@ -13,6 +13,7 @@ class DecksController < ApplicationController
 
   def show
     @deck = current_user.decks.find(params[:id])
+    @cards = current_user.cards
   end
 
   def new
@@ -29,10 +30,22 @@ class DecksController < ApplicationController
     end
   end
 
-  def update
+  def remove_card_from_deck
+    @card = current_user.cards.find(params[:id])
+    @deck = current_user.decks.find(@card.deck_id)
+    redirect_to deck_path
   end
 
-  def delete
+  def add_card
+    add_card_to_deck
+  end
+
+  def add_card_to_deck
+    @deck = current_user.decks.find(params[:id])
+    @card = current_user.cards.find(params[:card_id])
+    @card.deck_id = @deck.id
+    @card.save!
+    redirect_to deck_path(@deck)
   end
 
   private

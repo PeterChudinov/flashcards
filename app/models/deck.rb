@@ -1,6 +1,7 @@
 class Deck < ActiveRecord::Base
   has_many :cards
   belongs_to :user
+  accepts_nested_attributes_for :cards
 
   validates :name, presence: true, length: { minimum: 4, maximum: 20 }
   validates_associated :cards

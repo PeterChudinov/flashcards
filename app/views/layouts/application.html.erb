@@ -14,8 +14,7 @@
         <ul class="navigation-links">
           <% if current_user %>
             <li><%= link_to t('application.decks'), decks_path %></li>
-            <li><%= link_to t('application.all_cards'), cards_path %></li>
-            <li><%= link_to t('application.add_card'), new_card_path %></li>
+            <li><%= link_to t('application.add_card'), new_deck_card_path(current_user.current_deck) %></li>
             <li><%= link_to "#{current_user.email}", user_path(current_user) %>
             <li><%= link_to t('application.logout'), logout_path, method: :post %></li>
           <% else %>

@@ -5,7 +5,8 @@ class CardsController < ApplicationController
   end
 
   def create
-    @card = current_user.cards.new(card_params)
+    @deck = current_user.decks.find(params[:deck => [:deck_id]])
+    @card = @deck.cards.new(card_params)
     if @card.save!
       redirect_to cards_path
     else
@@ -15,18 +16,17 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = current_user.cards.new
-    @decks = current_user.decks.all
+    @card = current_user.current_deck.cards.new
+    @deck = current_user.decks.find(params[:deck_id])
   end
 
   def edit
     @card = current_user.cards.find(params[:id])
-    @decks = current_user.decks.all
+    @deck = current_user.decks.find(params[:deck_id])
   end
 
   def update
     @card = current_user.cards.find(params[:id])
-    @card.deck_id = params[:deck_id]
     if @card.update(card_params)
       @card.deck = params[:deck]
       redirect_to cards_path
@@ -45,6 +45,6 @@ class CardsController < ApplicationController
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :deck_id, :image)
+    params.require(:card).permit(:original_text, :translated_text, :image, :deck_id)
   end
 end

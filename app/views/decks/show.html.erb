@@ -16,11 +16,14 @@
         <td><%= card.original_text %></td>
         <td><%= card.translated_text %></td>
         <td><%= formated_time(card.review_date) %></td>
-        <td><%= link_to t('views.card.index.edit'), edit_card_path(card) %></td>
-        <td><%= link_to t('views.card.index.delete'), card, method: :delete %></td>
+        <td><%= link_to t('views.card.index.edit'), edit_deck_card_path(@deck.id, card) %></td>
+        <td><%= link_to t('views.card.index.delete'), remove_card_from_deck_path(card), method: :delete %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<% link_to t('decks.show.add_card'), edit_deck_path(@deck) %>
+<%= simple_form_for @deck do |f| %>
+  <%= select_tag :card_id, options_from_collection_for_select(@cards, 'id', 'original_text') %>
+  <%= button_to 'add card', add_card_to_deck_path %>
+<% end %>
