@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
   attr_accessor :current_user
 
   def current_deck
-    Deck.find(current_deck_id)
+    if current_deck_id.nil?
+      self.decks.first
+    else
+      Deck.find(current_deck_id)
+    end
   end
 end

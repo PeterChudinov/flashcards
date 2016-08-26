@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   get 'oauths/callback'
 
   resources :decks do 
-    resources :cards
+    resources :cards do
+      post 'decks', to: 'decks#create'
+      patch 'decks/:id', to: 'decks#create'
+    end
   end
 
   post 'decks/switch/:id', to: 'decks#switch', as: 'switch_deck'

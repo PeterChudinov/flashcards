@@ -1,4 +1,4 @@
-<%= simple_form_for(@deck) do |f| %>
+<%= simple_form_for @deck, url: { action: 'create' } do |f| %>
   <% @deck.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>

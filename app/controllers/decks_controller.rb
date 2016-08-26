@@ -13,7 +13,7 @@ class DecksController < ApplicationController
 
   def show
     @deck = current_user.decks.find(params[:id])
-    @cards = current_user.cards
+    @cards = current_user.cards.all
   end
 
   def new

@@ -1,4 +1,4 @@
-<%= simple_form_for(@deck) do |d| %>
+<%= simple_form_for @deck, url: { controller: 'cards', action: 'create' }, method: :post do |d| %>
   <%= d.simple_fields_for(@card) do |f| %>
     <% @card.errors.full_messages.each do |message| %>
       <li><%= message %></li>

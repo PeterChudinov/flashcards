@@ -50,10 +50,15 @@ ru:
         one: 'карточка'
         few: 'карточки'
         many: 'карточек'
+      deck:
+        one: 'колода'
+        few: 'колоды'
+        many: 'колод'
     attributes:
       card:
         original_text: 'Оригинальный текст'
         translated_text: 'Переведенный текст'
+        deck: 'Колода'
         current_image: 'Текущее изображение'
         image: 'Загрузить изображение'
         notice:
@@ -62,3 +67,6 @@ ru:
         email: 'Почта'
         password: 'Пароль'
         password_confirmation: 'Подтверждения пароля'
+      deck:
+        deck: 'колода'
+        name: 'имя'
