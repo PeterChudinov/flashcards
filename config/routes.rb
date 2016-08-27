@@ -6,8 +6,6 @@ Rails.application.routes.draw do
 
   resources :decks do 
     resources :cards do
-      post 'decks', to: 'decks#create'
-      patch 'decks/:id', to: 'decks#create'
     end
   end
 
@@ -17,7 +15,13 @@ Rails.application.routes.draw do
   delete 'decks/card/:id', to: 'decks#remove_card_from_deck', as: 'remove_card_from_deck'
 
   post 'trainer/:id/review', to: 'trainer#review', as: 'trainer_review'
+
 =begin
+  post 'decks/switch/:id', to: 'decks#switch', as: 'switch_deck'
+  post 'decks/:id', to: 'decks#add_card_to_deck', as: 'add_card_to_deck'
+  patch 'decks/:id', to: 'decks#add_card_to_deck'
+  delete 'decks/card/:id', to: 'decks#remove_card_from_deck', as: 'remove_card_from_deck'
+
   get 'decks', to: 'decks#choose', as: 'decks'
   get 'decks/new', to: 'decks#new', as: 'new_deck'
   post 'decks', to: 'decks#create'
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
   patch 'decks/:id', to: 'decks#add_card_to_deck'
   delete 'decks/card/:id', to: 'decks#remove_card_from_deck', as: 'remove_card_from_deck'
 =end
+
   get 'signup', to: 'sign_up#new', as: 'signup'
   post 'signup', to: 'sign_up#create', as: 'create_user'
 

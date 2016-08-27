@@ -11,6 +11,14 @@ class DecksController < ApplicationController
     flash[:notice] = "#{t('views.decks.switch.using')} '#{current_user.decks.find(current_user.current_deck_id).name}' #{t('views.decks.switch.as_main_deck')}"
   end
 
+  def update
+    @deck = current_user.decks.find(params[:id])
+    @card = current_user.cards.find(params[:card_id])
+    @card.deck_id = @deck.id
+    @card.save!
+    redirect_to deck_path(@deck)
+  end
+
   def show
     @deck = current_user.decks.find(params[:id])
     @cards = current_user.cards.all

@@ -1,7 +1,8 @@
 class CardsController < ApplicationController
-  
+  before_action :load_deck
+
   def index
-    @cards = current_user.cards.all.page(params[:page]).order(:review_date).reverse_order.per(20)
+    @cards = @deck.cards.all.page(params[:page]).order(:review_date).reverse_order.per(20)
   end
 
   def create
@@ -10,7 +11,7 @@ class CardsController < ApplicationController
     @card.deck_id = current_user.current_deck.id
     @card.original_text = params[:deck][:card][:original_text]
     @card.translated_text = params[:deck][:card][:translated_text]
-    #@card.deck_id = current_user.decks.find(params[:deck_id])
+   #@card.deck_id = current_user.decks.find(params[:deck_id])
    #@card = @deck.cards.new(card_params)
     if @card.save!
       redirect_to deck_cards_path
@@ -26,15 +27,14 @@ class CardsController < ApplicationController
   end
 
   def edit
-    @card = current_user.cards.find(params[:deck_id].id)
-    @deck = current_user.decks.find(params[:deck_id].deck)
+    @card = current_user.cards.find(params[:id])
   end
 
   def update
     @card = current_user.cards.find(params[:id])
-    if @card.update(card_params)
-      @card.deck = params[:deck]
-      redirect_to cards_path
+    if @card.update(params[deck: [:card]].to_h)
+      @card.deck = @deck
+      redirect_to deck_path(@deck)
     else
       redirect_to action: edit
     end
@@ -43,13 +43,18 @@ class CardsController < ApplicationController
   def destroy
     @card = current_user.cards.find(params[:id])
     if @card.destroy!
-      redirect_to decks_cards_path, notice: 'Карточка удалена!'
+      redirect_to deck_cards_path, notice: 'Карточка удалена!'
     end
   end
 
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :image, :card, :deck_id)
+    params.require(:card).permit(:original_text, :translated_text, :image,
+      { deck: [card: [:original_text, :translated_text]] }, :deck_id)
+  end
+
+  def load_deck
+  @deck = current_user.decks.find(params[:deck_id])
   end
 end
