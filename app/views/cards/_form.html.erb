@@ -1,7 +1,8 @@
-<%= simple_form_for(@card) do |f| %>
+<%= simple_form_for @card, url: deck_cards_path do |f| %>
   <% @card.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
+  <p><b>Deck:</b> <%= @deck.name %></p>
   <p>
     <%= f.label :original_text %><br>
     <%= f.text_field :original_text %>

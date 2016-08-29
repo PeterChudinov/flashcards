@@ -18,7 +18,7 @@
   	    <td><%= card.original_text %></td>
   	    <td><%= card.translated_text %></td>
   	    <td><%= formated_time(card.review_date) %></td>
-        <td><%= link_to t('views.card.index.edit'), edit_card_path(card) %></td>
+        <td><%= link_to t('views.card.index.edit'), edit_deck_card_path(card.deck, card) %></td>
         <td><%= link_to t('views.card.index.delete'), card, method: :delete %></td>
   	  </tr>
   	<% end %>

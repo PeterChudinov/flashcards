@@ -1,3 +1,6 @@
 test:
   adapter: postgresql
   database: flashcards_test
+development:
+  adapter: postgresql
+  database: flashcards_development

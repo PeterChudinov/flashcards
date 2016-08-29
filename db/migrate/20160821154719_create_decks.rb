@@ -7,7 +7,7 @@ class CreateDecks < ActiveRecord::Migration
     end
 
     change_table :cards do |t|
-      t.belongs_to :deck
+      t.belongs_to :deck, null: false
     end
   end
 end

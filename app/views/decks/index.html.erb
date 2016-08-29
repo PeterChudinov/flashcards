@@ -1,0 +1,8 @@
+<h1><%= t('views.deck.index.title') %></h1>
+
+<% @decks.each do |deck| %>
+    <li><b><%= deck.name %></b> / 
+    <%= link_to 'LOCALE_SET_CURRENT_DECK', deck_set_current_path(deck_id: deck.id), method: :post %> / 
+    <%= link_to t('views.card.index.edit'), edit_deck_path(deck) %> / 
+    <%= link_to t('views.card.index.delete'), deck, method: :delete %></li>
+<% end %>

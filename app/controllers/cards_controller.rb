@@ -1,16 +1,18 @@
 class CardsController < ApplicationController
+  before_action :load_deck
   
   def index
-    @cards = current_user.cards.all.page(params[:page]).order(:review_date).reverse_order.per(20)
+    redirect_to deck_path(@deck)
   end
 
   def create
-    @card = current_user.cards.new(card_params)
+    @card = @deck.cards.new(card_params)
+    @card.user = current_user
     if @card.save!
-      redirect_to cards_path
+      redirect_to deck_cards_path
     else
       flash[:error] = @card.errors.full_messages
-      redirect_to new_card_path
+      redirect_to new_deck_card_path
     end
   end
 
@@ -25,7 +27,7 @@ class CardsController < ApplicationController
   def update
     @card = current_user.cards.find(params[:id])
     if @card.update(card_params)
-      redirect_to cards_path
+      redirect_to deck_cards_path
     else
       redirect_to :action => :edit
     end
@@ -34,13 +36,17 @@ class CardsController < ApplicationController
   def destroy
     @card = current_user.cards.find(params[:id])
     if @card.destroy!
-      redirect_to cards_path, notice: 'Карточка удалена!'
+      redirect_to edit_deck_path(@deck), notice: 'LOCALE_CARD_DELETED'
     end
   end
 
   private
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :image)
+    params.require(:card).permit(:original_text, :translated_text, :image, :deck_id)
+  end
+
+  def load_deck
+    @deck = current_user.decks.find(params[:deck_id])
   end
 end
