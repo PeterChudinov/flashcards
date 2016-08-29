@@ -16,15 +16,14 @@ class User < ActiveRecord::Base
 
   attr_accessor :current_user
 
-  def current_deck
+  def current_deck_cards
     if current_deck_id.nil?
-      return
+      self.cards.all
     else
-      self.decks.find(current_deck_id)
+      self.decks.find(current_deck_id).cards.all
     end
   end
 
-  # TODO, FIX!
   def set_current_deck(id)
     self.current_deck_id = id
   end
