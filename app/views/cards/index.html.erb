@@ -13,6 +13,7 @@
 
   <tbody>
   	<% @cards.each do |card| %>
+      <%= %>
   	  <tr>
         <td><%= image_tag card.image.url(:thumb) %></td>
   	    <td><%= card.original_text %></td>

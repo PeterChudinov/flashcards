@@ -32,5 +32,10 @@ class DecksController < ApplicationController
     if @deck.destroy!
       redirect_to decks_path, notice: 'LOCALE_DECK_DELETED'
     end
+
+  private
+
+  def deck_params
+    params.require(:deck).permit(:name, :card)
   end
 end

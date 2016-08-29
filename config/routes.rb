@@ -14,11 +14,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update]
 
-  get 'signin' => 'sessions#new', :as => 'signin'
-  post 'login' => 'sessions#create', :as => 'login'
-  post 'logout' => 'sessions#destroy', :as => 'logout'
+  get 'signin', to: 'sessions#new', as: 'signin'
+  post 'login', to:'sessions#create', as: 'login'
+  post 'logout', to: 'sessions#destroy', as: 'logout'
 
-  post "oauth/callback" => "oauths#callback"
-  get "oauth/callback" => "oauths#callback" # for use with Github, Facebook
-  get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
+  post "oauth/callback", to: "oauths#callback"
+  get "oauth/callback", to: "oauths#callback" # for use with Github, Facebook
+  get "oauth/:provider", to: "oauths#oauth", as: :auth_at_provider
 end

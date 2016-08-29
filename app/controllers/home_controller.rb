@@ -3,11 +3,10 @@ class HomeController < ApplicationController
 
   def index
     if (@deck = current_user.current_deck).nil?
-      @cards = current_user.cards
+      @cards = current_user.cards.get_review_card
     else
-      @cards = @deck.cards
+      @cards = @deck.get_review_card
     end
-    @card = @cards.get_review_card
   end
 
   def login

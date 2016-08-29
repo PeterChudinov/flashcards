@@ -17,7 +17,8 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = current_user.cards.new
+    @card = current_user.current_deck.cards.new
+    @deck = current_user.current_deck
   end
 
   def edit
@@ -26,10 +27,10 @@ class CardsController < ApplicationController
 
   def update
     @card = current_user.cards.find(params[:id])
-    if @card.update(card_params)
+    if @card.update!(card_params)
       redirect_to deck_cards_path
     else
-      redirect_to :action => :edit
+      redirect_to action: edit
     end
   end
 

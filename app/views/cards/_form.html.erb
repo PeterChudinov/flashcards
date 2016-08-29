@@ -8,20 +8,26 @@
     <%= f.text_field :original_text %>
   </p>
 
-  <p>
-    <%= f.label :translated_text %><br>
-    <%= f.text_field :translated_text %>
-  </p>
-
-  <p>
     <p>
-      <b><%= t('activerecord.attributes.card.current_image') %></b>
-      <%= image_tag @card.image.url(:medium) %>
+      <%= f.label :original_text %><br>
+      <%= f.text_field :original_text %>
     </p>
-    <%= f.input :image, as: :file %>
-  </p>
 
-  <p>
-    <%= f.submit %>
-  </p>
+    <p>
+      <%= f.label :translated_text %><br>
+      <%= f.text_field :translated_text %>
+    </p>
+
+    <p>
+      <p>
+        <b><%= t('activerecord.attributes.card.current_image') %></b>
+        <%= image_tag @card.image.url(:medium) %>
+      </p>
+      <%= f.input :image, as: :file %>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+  <% end %>
 <% end %>

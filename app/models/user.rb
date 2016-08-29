@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
     end
   end
 
+  # TODO, FIX!
   def set_current_deck(id)
     self.current_deck_id = id
   end

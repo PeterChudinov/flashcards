@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :deck do
-    
-  end
+  #factory :deck do
+   # name 'animals'
+  #end
 end
