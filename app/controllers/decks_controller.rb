@@ -21,9 +21,10 @@ class DecksController < ApplicationController
   end
 
   def set_user_current_deck
+    @user = current_user
     @deck = current_user.decks.find(params[:deck_id])
-    current_user.set_current_deck(@deck.id)
-    @deck.save!
+    @user.set_current_deck(@deck.id)
+    @user.save!
     redirect_to decks_path, notice: "LOCALE_CURRENT_DECK_SET_TO '#{@deck.name}'"
   end
 
@@ -32,6 +33,7 @@ class DecksController < ApplicationController
     if @deck.destroy!
       redirect_to decks_path, notice: 'LOCALE_DECK_DELETED'
     end
+  end
 
   private
 
