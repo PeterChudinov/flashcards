@@ -4,6 +4,7 @@ class DecksController < ApplicationController
   end
 
   def show
+    @deck = current_user.decks.find(params[:id])
     redirect_to edit_deck_path(@deck)
   end
 
@@ -12,7 +13,9 @@ class DecksController < ApplicationController
   end
 
   def create
-    @deck = current_user.decks.new(params)
+    @deck = current_user.decks.new(name: (params[:deck][:name]))
+    @deck.save!
+    redirect_to edit_deck_path(@deck)
   end
 
   def edit
@@ -38,6 +41,6 @@ class DecksController < ApplicationController
   private
 
   def deck_params
-    params.require(:deck).permit(:name, :card)
+    params.require(:deck).permit(:name, [:deck][:name])
   end
 end

@@ -7,11 +7,9 @@ class SignUpController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.decks.new(name: '<sample deck>')
-
     if @user.save!
       auto_login(@user)
-      flash[:notice] = 'Регистрация успешна!'
+      flash[:notice] = 'LOCALE_SIGN_UP_SUCCESS'
       redirect_back_or_to root_path
     else
       flash[:error] = @user.errors.full_messages

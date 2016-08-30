@@ -17,8 +17,8 @@ class CardsController < ApplicationController
   end
 
   def new
-    @card = current_user.current_deck.cards.new
-    @deck = current_user.current_deck
+    @deck = current_user.decks.find(params[:deck_id])
+    @card = @deck.cards.new
   end
 
   def edit

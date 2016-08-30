@@ -1,15 +1,16 @@
 require 'capybara/rspec'
 
-Capybara.describe 'card trainer', :type => :feature do
+Capybara.describe 'card trainer feature spec', :type => :feature do
   let(:user) { FactoryGirl.create(:user) }
+  let(:deck) { FactoryGirl.create(:deck, user: user) }
+  let(:card) { FactoryGirl.create(:card, deck: deck, user: user) }
 
   before :example do
-    @card = FactoryGirl.create(:card, user: user)
-    @card.set_test_review_date!
+    card.set_test_review_date!
 
     # Begin login block
     visit root_path
-    fill_in 'email', with: 'first.last@example.com'
+    fill_in 'email', with: card.user.email
     fill_in 'password', with: '123456'
     click_button 'Login'
     # End login block

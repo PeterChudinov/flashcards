@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
 
   def current_deck_cards
     if current_deck_id.nil?
-      self.cards.all
+      self.cards
     else
-      self.decks.find(current_deck_id).cards.all
+      self.decks.find(current_deck_id).cards
     end
   end
 
