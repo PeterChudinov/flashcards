@@ -1,7 +1,7 @@
 require 'capybara/rspec'
 
 # move and rename
-Capybara.describe 'card trainer', :type => :feature do
+Capybara.describe 'card management', :type => :feature do
   let(:user) { FactoryGirl.create(:user) }
   let(:deck) { FactoryGirl.create(:deck, user: user) }
   let(:card) { FactoryGirl.create(:card, deck: deck, user: user) }
@@ -31,5 +31,24 @@ Capybara.describe 'card trainer', :type => :feature do
     attach_file 'card_image', "#{Rails.root}/spec/fixtures/dog.jpg"
     click_button 'Create card'
     expect(page).to have_content 'hund'
+  end
+
+  it 'checks if user can edit a card' do
+    visit root_path
+    click_link 'Decks'
+    click_link 'Edit'
+    click_link 'Edit'
+    fill_in 'card_original_text', with: 'katze'
+    fill_in 'card_translated_text', with: 'cat'
+    click_button 'Update card'
+    expect(page).to have_content 'katze'
+  end
+
+  it 'checks if user can delete a card' do
+    visit root_path
+    click_link 'Decks'
+    click_link 'Edit'
+    click_link 'Delete'
+    expect(page).to have_content 'LOCALE_CARD_DELETED'
   end
 end

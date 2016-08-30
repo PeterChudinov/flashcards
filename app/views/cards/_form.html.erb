@@ -1,4 +1,4 @@
-<%= simple_form_for @card, url: deck_cards_path do |f| %>
+<%= simple_form_for [@deck, @card] do |f| %>
   <% @card.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>

@@ -38,6 +38,9 @@ class CardsController < ApplicationController
     @card = current_user.cards.find(params[:id])
     if @card.destroy!
       redirect_to edit_deck_path(@deck), notice: 'LOCALE_CARD_DELETED'
+    else
+      flash[:error] = 'LOCALE_CARD_DESTRUCTION_FAILED'
+      redirect_to deck_cards_path
     end
   end
 

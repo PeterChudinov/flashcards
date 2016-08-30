@@ -63,8 +63,6 @@ group :development, :test do
   gem 'capybara'
   # Codeclimate button
   gem "codeclimate-test-reporter", require: nil
-  # Database Cleaner
-  gem 'database_cleaner'
 end
 
 group :development do
