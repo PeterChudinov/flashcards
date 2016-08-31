@@ -7,8 +7,7 @@ class CardsController < ApplicationController
 
   def create
     @card = @deck.cards.new(card_params)
-    @card.user = current_user
-    if @card.save!
+    if @card.save
       redirect_to deck_cards_path
     else
       flash[:error] = @card.errors.full_messages

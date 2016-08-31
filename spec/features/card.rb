@@ -1,7 +1,7 @@
 require 'capybara/rspec'
 
 # move and rename
-Capybara.describe 'card management', :type => :feature do
+Capybara.describe 'card management', type: :feature do
   let(:user) { FactoryGirl.create(:user) }
   let(:deck) { FactoryGirl.create(:deck, user: user) }
   let(:card) { FactoryGirl.create(:card, deck: deck, user: user) }

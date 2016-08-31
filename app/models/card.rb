@@ -1,6 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :user
   belongs_to :deck
+  delegate :user, to: :deck
 
   has_attached_file :image, styles: { medium: "300x300#", thumb: "20x20#" }
   validates_attachment :image,
@@ -9,13 +10,13 @@ class Card < ActiveRecord::Base
     }
 
   before_validation(on: :create) do
+    self.user = self.deck.user
     self.review_date = 3.days.from_now.end_of_day
   end
 
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validates :review_date, presence: true
-  validates :deck_id, presence: true
 
   validate :texts_are_not_matching
 

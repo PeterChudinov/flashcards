@@ -1,6 +1,6 @@
 require 'capybara/rspec'
 
-Capybara.describe 'user sign up', :type => :feature do
+Capybara.describe 'user sign up', type: :feature do
   let(:user) { FactoryGirl.create(:user) }
   let(:deck) { FactoryGirl.create(:deck, user: user) }
   let(:card) { FactoryGirl.create(:card, deck: deck, user: user) }
