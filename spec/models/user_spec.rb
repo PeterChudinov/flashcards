@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.configure do |config|
-  config.before(:example, :deck => nil) do
+  config.before(:example, deck: nil) do
     user.set_current_deck(nil)
   end
 end
@@ -21,7 +21,7 @@ RSpec.describe User, type: :model do
       specify { expect(user.current_deck_cards).to eq(user.cards) }
     end
 
-    context 'returns all cards if there is no current deck', :deck => nil do
+    context 'returns all cards if there is no current deck', deck: :nil do
       specify { expect(user.current_deck_cards).to eq(deck.cards) }
     end
   end

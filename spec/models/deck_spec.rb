@@ -12,10 +12,4 @@ RSpec.describe Deck, type: :model do
   it 'creates a valid instance' do
     expect { expect(deck.name).to eq('test deck') }
   end
-
-  describe '#get_review_card' do
-    context 'checks if it returns a valid card' do
-      specify { expect(deck.get_review_card.original_text).to eq('привет') }
-    end
-  end
 end
