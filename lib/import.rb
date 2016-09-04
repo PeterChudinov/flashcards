@@ -5,6 +5,8 @@ class Import
   ROOT_URL_2 = "http://www.languagedaily.com/learn-german/vocabulary/most-common-german-words-2"
 
   def self.run
+    new.create_users
+    new.create_decks
     new.parse
   end
 
@@ -26,7 +28,6 @@ class Import
         break
       end
     end
-    create_users
   end
 
   def parse_page(page)
@@ -43,7 +44,8 @@ class Import
       puts @card = Card.create(
         original_text: words[w_id][:original_text],
         translated_text: words[w_id][:translated_text],
-        user_id: 1
+        user_id: 1,
+        deck_id: 1
       )
       w_id += 1
     end
@@ -67,5 +69,25 @@ class Import
     @user3.password = '123qwe'
     @user3.password_confirmation = '123qwe'
     @user3.save!
+  end
+
+  def create_decks
+    User.all.each do |u|
+      3.times do |count|
+        u.decks.create(name: "test deck #{count}")
+      end
+    end
+  end
+
+  def tossup
+    @cards = Card.all
+    puts "got #{@cards.count} cards"
+    @cards.each do |c|
+      c.user_id = rand(1..User.all.count)
+      c.deck_id = c.user.decks.all.sample
+      c.review_date = rand(1..7).days.ago
+      c.save!
+      puts "card #{c[:original_text]} is assigned to user #{c[:user_id]}, the review date is now #{c[:review_date]}"
+    end
   end
 end

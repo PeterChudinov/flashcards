@@ -7,7 +7,17 @@ en:
     login: 'Log in'
     signup: 'Sign up'
     logout: 'Log out'
+    decks: 'Decks'
+    new_deck: 'New deck'
   views:
+    deck:
+      index:
+        title: 'Your decks'
+      edit:
+        add_card: 'Add a card'
+      switch:
+        using: 'You are now using'
+        as_main_deck: 'as your main deck'
     card:
       edit:
         title: 'Edit card'
@@ -16,7 +26,7 @@ en:
         image: 'Image'
         original: 'In German'
         translated: 'In English'
-        last_review: 'Last review'
+        last_review: 'Next review'
         edit: 'Edit'
         delete: 'Delete'
       new:
@@ -41,10 +51,14 @@ en:
         one: 'card'
         few: 'cards'
         many: 'cards'
+      deck:
+        one: 'deck'
+        many: 'decks'
     attributes:
       card:
         original_text: 'Original text'
         translated_text: 'Translated text'
+        deck: 'Deck'
         current_image: 'Current image'
         image: 'Upload an image'
         notice:
@@ -53,6 +67,9 @@ en:
         email: 'Email'
         password: 'Password'
         password_confirmation: 'Password confirmation'
+      deck:
+        deck: 'deck'
+        name: 'name'
 
 # Files in the config/locales directory are used for internationalization
 # and are automatically loaded by Rails. If you want to use locales other

@@ -1,0 +1,28 @@
+<h1><%= t('views.card.index.title') %></h1>
+
+<table>
+  <thead>
+    <tr>
+    <th><%= t('views.card.index.image') %></th>
+    <th><%= t('views.card.index.original') %></th>
+    <th><%= t('views.card.index.translated') %></th>
+    <th><%= t('views.card.index.last_review') %></th>
+    <th></th><th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cards.each do |card| %>
+      <tr>
+        <td><%= image_tag card.image.url(:thumb) %></td>
+        <td><%= card.original_text %></td>
+        <td><%= card.translated_text %></td>
+        <td><%= formated_time(card.review_date) %></td>
+        <td><%= link_to t('views.card.index.edit'), edit_deck_card_path(@deck, card) %></td>
+        <td><%= link_to t('views.card.index.delete'), deck_card_path(@deck, card), method: :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to t('views.deck.edit.new_card'), new_deck_card_path(@deck) %>

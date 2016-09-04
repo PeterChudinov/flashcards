@@ -1,0 +1,14 @@
+<%= simple_form_for @deck, url: { action: 'create' } do |f| %>
+  <% @deck.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

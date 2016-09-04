@@ -1,9 +1,9 @@
 require 'capybara/rspec'
 
-Capybara.describe 'user sign up', :type => :feature do
-  before :example do
-    @user = FactoryGirl.create(:user)
-  end
+Capybara.describe 'user feature spec', type: :feature do
+  let(:user) { FactoryGirl.create(:user) }
+  let(:deck) { FactoryGirl.create(:deck, user: user) }
+  let(:card) { FactoryGirl.create(:card, deck: deck, user: user) }
 
   it 'checks if user can sign up' do
     visit root_path
@@ -12,40 +12,31 @@ Capybara.describe 'user sign up', :type => :feature do
     fill_in 'user_password', with: '123456'
     fill_in 'user_password_confirmation', with: '123456'
     click_button 'Create User'
-    expect(page).to have_content 'Регистрация успешна!'
-  end
-
-  it "checks if user can't sign up if password validation fails" do
-    visit root_path
-    click_link 'Sign up'
-    fill_in 'user_email', with: 'test.test@example.com'
-    fill_in 'user_password', with: 'qw'
-    fill_in 'user_password_confirmation', with: 'qw'
-    click_button 'Create User'
-    expect(page).to have_content '["Password is too short (minimum is 3 characters)"]'
+    expect(page).to have_content 'LOCALE_SIGN_UP_SUCCESS'
   end
 
   it 'checks if user can update their password' do
     # begin login block
     visit root_path
-    fill_in 'email', with: 'first.last@example.com'
+    fill_in 'email', with: user.email
     fill_in 'password', with: '123456'
     click_button 'Login'
+    expect(page).to have_content 'LOCALE_LOG_IN_SUCCESS'
     # end login block
 
-    click_link 'first.last@example.com'
+    click_link user.email
     click_link 'Update profile'
     fill_in 'user_password', with: 'MyN3wP4$$wd'
     fill_in 'user_password_confirmation', with: 'MyN3wP4$$wd'
     click_button 'Update User'
 
-    expect(page).to have_content 'Профиль успешно обновлен'
+    expect(page).to have_content 'LOCALE_PROFILE_UPDATE_SUCCESS'
     click_link 'Log out'
     
     visit root_path
-    fill_in 'email', with: 'first.last@example.com'
+    fill_in 'email', with: user.email
     fill_in 'password', with: 'MyN3wP4$$wd'
     click_button 'Login'
-    expect(page).to have_content 'Вы вошли как first.last@example.com'
+    expect(page).to have_content 'LOCALE_LOG_IN_SUCCESS'
   end
 end

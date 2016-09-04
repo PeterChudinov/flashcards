@@ -1,5 +1,7 @@
 class Card < ActiveRecord::Base
   belongs_to :user
+  belongs_to :deck
+  delegate :user, to: :deck
 
   has_attached_file :image, styles: { medium: "300x300#", thumb: "20x20#" }
   validates_attachment :image,
@@ -8,6 +10,7 @@ class Card < ActiveRecord::Base
     }
 
   before_validation(on: :create) do
+    self.user = self.deck.user
     self.review_date = 3.days.from_now.end_of_day
   end
 
@@ -18,6 +21,7 @@ class Card < ActiveRecord::Base
   validate :texts_are_not_matching
 
   validates :user_id, presence: true
+  validates :deck_id, presence: true
 
   def texts_are_not_matching
     ot = UnicodeUtils::downcase(original_text.strip)

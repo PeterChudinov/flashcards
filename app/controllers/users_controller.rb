@@ -15,9 +15,9 @@ class UsersController < ApplicationController
     @user = current_user
     if @user.update!(user_params)
       redirect_back_or_to user_path(@user)
-      flash[:notice] = 'Профиль успешно обновлен'
+      flash[:notice] = 'LOCALE_PROFILE_UPDATE_SUCCESS'
     else
-      render :action => :edit
+      render action: edit
     end
   end
 
