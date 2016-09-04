@@ -24,10 +24,7 @@ class DecksController < ApplicationController
   end
 
   def set_user_current_deck
-    @user = current_user
-    @deck = current_user.decks.find(params[:deck_id])
-    @user.set_current_deck(@deck.id)
-    @user.save!
+    current_user.set_current_deck!(params[:deck_id])
     redirect_to decks_path, notice: "LOCALE_CURRENT_DECK_SET_TO '#{@deck.name}'"
   end
 

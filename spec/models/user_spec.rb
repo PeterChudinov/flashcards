@@ -26,9 +26,9 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe '#set_current_deck(id)' do
+  describe '#set_current_deck!(id)' do
     context 'sets deck passed in the argument as current' do
-      specify { expect(user.set_current_deck(deck.id)).to eq(deck.id) }
+      specify { expect(user.set_current_deck!(deck.id)).to eq(deck.id) }
       # Should check if user.current_deck_id is equal to deck.id
     end
   end
