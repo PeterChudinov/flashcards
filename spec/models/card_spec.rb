@@ -3,8 +3,11 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before do
+  before(:example) do
     @card = FactoryGirl.create(:card, user: user)
+
+    # touch_review_date! needs that to pass the test
+    @card.review_date = 4.days.from_now
   end
 
   it 'creates a valid instance' do
@@ -24,13 +27,13 @@ RSpec.describe Card, type: :model do
 
   describe '#touch_review_date!' do
     it 'should set review date to 3 days ahead' do
-      expect { @card.touch_review_date! }.to change { @card.review_date }.to(3.days.from_now.end_of_day)
+      expect { @card.touch_review_date! }.to change { @card.review_date }.to(3.days.from_now.end_of_day.to_date)
     end
   end
 
   describe '#set_test_review_date!' do
     it 'should set review date to 5 days ago' do
-      expect { @card.set_test_review_date! }.to change { @card.review_date }.to(5.days.ago.end_of_day)
+      expect { @card.set_test_review_date! }.to change { @card.review_date }.to(5.days.ago.end_of_day.to_date)
     end
   end
 end

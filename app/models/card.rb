@@ -1,4 +1,4 @@
-class Card < ActiveRecord::Base
+class Card < ApplicationRecord
   belongs_to :user
   belongs_to :deck
   delegate :user, to: :deck

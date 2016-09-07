@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
 
-
+# Ruby
+ruby '2.3.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.6'
-# Use postgres as the databas for Active Record
+gem 'rails', '~> 5.0.0.1'
+# Use postgres as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -38,7 +39,6 @@ gem 'rubocop', '~> 0.41.1', require: false
 gem 'kaminari'
 # Sorcery for auth
 gem "sorcery"
-
 # Simple Form for forms
 gem 'simple_form'
 
@@ -56,7 +56,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # RSpec for testing
-  gem 'rspec-rails', '~> 3.4'
+  gem 'rspec-rails', '~> 3.5.0beta1'
   # FactoryGirl to populate test db
   gem 'factory_girl_rails'
   # Capybara to test user behaviour
