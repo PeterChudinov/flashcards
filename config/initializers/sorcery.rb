@@ -81,7 +81,7 @@ Rails.application.config.sorcery.configure do |config|
 
   config.twitter.key = "qMKnorjmKX3YQPbuS6114zcx0"
   config.twitter.secret = "dTyhFEImVweFCmBNwHIW3HAeopFuSrNY2e2fcvrxAJwshtVXBU"
-  config.twitter.callback_url = "http://127.0.0.1:3000/oauth/callback?provider=twitter"
+  config.twitter.callback_url = ENV['twitter_callback_url']
   config.twitter.user_info_mapping = {:email => "screen_name"}
 
   # You can change it by your local ca_file. i.e. '/etc/pki/tls/certs/ca-bundle.crt'

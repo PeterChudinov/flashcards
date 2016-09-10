@@ -9,8 +9,8 @@ Easiest way to learn German with English.
 ### To try it out:
 
 You would need
- - Ruby >= 2.3.0
- - Rails >= 4.2
+ - Ruby >= 2.3.1
+ - Rails >= 5
  - imagemagick (you can get it by running `brew install imagemagick`)
  - any fresh PostgreSQL
 

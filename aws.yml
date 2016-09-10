@@ -2,3 +2,7 @@ development:
   aws_access_key_id: ENV['aws_access_key_id']
   aws_secret_access_key: ENV['aws_secret_access_key']
   aws_region: ENV['aws_region']
+production:
+  aws_access_key_id: ENV['aws_access_key_id']
+  aws_secret_access_key: ENV['aws_secret_access_key']
+  AWS_REGION: ENV['aws_region']
