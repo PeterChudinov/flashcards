@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Card, type: :model do
   let(:user) { FactoryGirl.create(:user) }
 
-  before(:example) do
+  before :example do
     @card = FactoryGirl.create(:card, user: user)
 
     # touch_review_date! needs that to pass the test

@@ -1,7 +1,7 @@
 #TODO: Clean up
 
 if ENV['aws_access_key_id'].nil?
-   Rails.application.config.paperclip_defaults = { storage: 'file' }
+  Rails.application.config.paperclip_defaults = { storage: 'file' }
 else
   Paperclip::Attachment.default_options[:storage] = :s3
   Paperclip::Attachment.default_options[:s3_protocol] = 'http'
