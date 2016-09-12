@@ -61,12 +61,11 @@ group :development, :test do
   gem 'factory_girl_rails'
   # Capybara to test user behaviour
   gem 'capybara'
+  # Capybara page screenshots
+  gem 'capybara-screenshot'
   # Codeclimate button
   gem "codeclimate-test-reporter", require: nil
 end
-
-# Capybara page screenshots
-gem 'capybara-screenshot', group: :test
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
