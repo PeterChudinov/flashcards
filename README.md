@@ -5,17 +5,17 @@ flashcards
 
 ### What it is:
 
-Easiest way to learn German with English using spaced repetition and [https://en.wikipedia.org/wiki/Leitner_system](Leitner system).
+Easiest way to learn German with English using spaced repetition and [Leitner system](https://en.wikipedia.org/wiki/Leitner_system).
 
 ### Built with:
 
  - Ruby 2.3.1 on Rails 5 (upgraded from Ruby 2.3.0 and Rails 4.2)
  - PostgreSQL
  - RSpec x Capybara
- - AWS
- - Misc. gems such as `kaminari`, `sorcery`, `simple_form`, `paperclip`
+ - AWS S3 (picture storage)
+ - Misc. gems such as `kaminari`, `sorcery`, `simple_form`, `paperclip`, etc.
 
- Depolyed at [flashcards-mkdev.heroku.com](Heroku)
+Depolyed at [flashcards-mkdev.heroku.com](Heroku)
 
 ### To try it out:
 

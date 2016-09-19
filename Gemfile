@@ -65,6 +65,8 @@ group :development, :test do
   gem 'capybara-screenshot'
   # Codeclimate button
   gem "codeclimate-test-reporter", require: nil
+  # Timecop to test time-dependent code
+  gem 'timecop'
 end
 
 group :development do

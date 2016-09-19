@@ -20,13 +20,48 @@ Capybara.describe 'card trainer feature spec', type: :feature do
     visit root_path
     fill_in 'response', with: 'привет'
     click_button 'Check'
-    expect(page).to have_content 'Верно!'
+    expect(page).to have_content 'LOCALE_TRAINER_SUCCESS'
   end
 
   it 'checks if the user can do the card quiz incorrectly' do
     visit root_path
     fill_in 'response', with: 'не знаю'
     click_button 'Check'
-    expect(page).to have_content "Неверно, надо 'привет'"
+    expect(page).to have_content "LOCALE_TRAINER_FAILURE_SHOULD_BE"
+  end
+
+  it 'checks if the user can do the quiz rolls user card back after 3 unsucessful attempts' do
+    visit root_path
+    fill_in 'response', with: 'привет'
+    click_button 'Check'
+    Timecop.travel(1.day.from_now.end_of_day) do
+      fill_in 'response', with: 'привет'
+      click_button 'Check'
+    end
+    Timecop.travel(4.days.from_now.end_of_day) do
+      fill_in 'response', with: 'привет'
+      click_button 'Check'
+    end
+    Timecop.travel(8.days.from_now.end_of_day) do
+      fill_in 'response', with: 'привет'
+      click_button 'Check'
+    end
+    Timecop.travel(9.weeks.from_now.end_of_day) do
+      fill_in 'response', with: 'привет'
+      click_button 'Check'
+    end
+    Timecop.travel(15.weeks.from_now.end_of_day) do
+      fill_in 'response', with: 'idk'
+      click_button 'Check'
+      fill_in 'response', with: 'idk'
+      click_button 'Check'
+      fill_in 'response', with: 'idk'
+      click_button 'Check'
+      fill_in 'response', with: 'привет'
+      click_button 'Check'
+      fill_in 'response', with: 'привет'
+      click_button 'Check'
+      expect(page).to have_content "No more cards for now, wait until tomorrow"
+    end
   end
 end
