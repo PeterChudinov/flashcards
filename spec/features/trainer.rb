@@ -34,34 +34,12 @@ Capybara.describe 'card trainer feature spec', type: :feature do
     visit root_path
     fill_in 'response', with: 'привет'
     click_button 'Check'
+
     Timecop.travel(1.day.from_now.end_of_day) do
       fill_in 'response', with: 'привет'
       click_button 'Check'
     end
-    Timecop.travel(4.days.from_now.end_of_day) do
-      fill_in 'response', with: 'привет'
-      click_button 'Check'
-    end
-    Timecop.travel(8.days.from_now.end_of_day) do
-      fill_in 'response', with: 'привет'
-      click_button 'Check'
-    end
-    Timecop.travel(9.weeks.from_now.end_of_day) do
-      fill_in 'response', with: 'привет'
-      click_button 'Check'
-    end
-    Timecop.travel(15.weeks.from_now.end_of_day) do
-      fill_in 'response', with: 'idk'
-      click_button 'Check'
-      fill_in 'response', with: 'idk'
-      click_button 'Check'
-      fill_in 'response', with: 'idk'
-      click_button 'Check'
-      fill_in 'response', with: 'привет'
-      click_button 'Check'
-      fill_in 'response', with: 'привет'
-      click_button 'Check'
-      expect(page).to have_content "No more cards for now, wait until tomorrow"
-    end
+    
+    expect(page).to have_content "No more cards for now, wait until tomorrow"
   end
 end
