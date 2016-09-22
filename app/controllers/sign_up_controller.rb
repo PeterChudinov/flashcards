@@ -7,7 +7,7 @@ class SignUpController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       auto_login(@user)
       flash[:notice] = 'LOCALE_SIGN_UP_SUCCESS'
       redirect_back_or_to root_path

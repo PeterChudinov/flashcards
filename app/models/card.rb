@@ -17,6 +17,8 @@ class Card < ApplicationRecord
   validates :original_text, presence: true
   validates :translated_text, presence: true
   validates :review_date, presence: true
+  validates :stage, inclusion: 0..5, presence: true
+  validates :failed_attempts_count, inclusion: 0..3
 
   validate :texts_are_not_matching
 
@@ -36,15 +38,40 @@ class Card < ApplicationRecord
   end
 
   def self.get_review_card
-    self.where(["review_date < ?", Date.today]).order('RANDOM()').first
+    self.where(["review_date <= ?", Date.today]).sample
   end
 
   def check_answer?(response)
-    UnicodeUtils::downcase(response).strip == UnicodeUtils::downcase(original_text).strip
+    result = UnicodeUtils::downcase(response).strip == UnicodeUtils::downcase(original_text).strip
+    unless result
+      update_column(:failed_attempts_count, failed_attempts_count + 1)
+      if failed_attempts_count == 3
+        update_column(:failed_attempts_count, 0)
+        update_column(:stage, 0)
+      end
+    end
+    return result
+  end
+
+  def stage_review_date
+    case stage
+    when 0
+      Date.today.beginning_of_day
+    when 1
+      12.hours.from_now
+    when 2
+      3.days.from_now.end_of_day
+    when 3
+      1.week.from_now.end_of_day
+    when 4
+      2.weeks.from_now.end_of_day
+    when 5
+      1.month.from_now.end_of_day
+    end
   end
 
   def touch_review_date!
-    update_column(:review_date, 3.days.from_now.end_of_day)
+    update_columns(review_date: stage_review_date, stage: stage + 1) if stage < 5
   end
 
   # For testing purpouses only
@@ -52,3 +79,4 @@ class Card < ApplicationRecord
     update_column(:review_date, 5.days.ago.end_of_day)
   end
 end
+

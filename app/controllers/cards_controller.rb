@@ -26,7 +26,7 @@ class CardsController < ApplicationController
 
   def update
     @card = current_user.cards.find(params[:id])
-    if @card.update!(card_params)
+    if @card.update(card_params)
       redirect_to deck_cards_path
     else
       redirect_to action: edit
@@ -35,11 +35,12 @@ class CardsController < ApplicationController
 
   def destroy
     @card = current_user.cards.find(params[:id])
-    if @card.destroy!
+    @deck = @card.deck
+    if @card.destroy
       redirect_to edit_deck_path(@deck), notice: 'LOCALE_CARD_DELETED'
     else
       flash[:error] = 'LOCALE_CARD_DESTRUCTION_FAILED'
-      redirect_to deck_cards_path
+      redirect_to edit_deck_path(@deck)
     end
   end
 

@@ -3,8 +3,19 @@ flashcards
 
 [![Build Status](https://travis-ci.org/PeterChudinov/flashcards.svg?branch=master)](https://travis-ci.org/PeterChudinov/flashcards) [![Code Climate](https://codeclimate.com/github/PeterChudinov/flashcards/badges/gpa.svg)](https://codeclimate.com/github/PeterChudinov/flashcards) [![Test Coverage](https://codeclimate.com/github/PeterChudinov/flashcards/badges/coverage.svg)](https://codeclimate.com/github/PeterChudinov/flashcards/coverage)
 
-### What it is
-Easiest way to learn German with English.
+### What it is:
+
+Easiest way to learn German with English using spaced repetition and [Leitner system](https://en.wikipedia.org/wiki/Leitner_system).
+
+### Built with:
+
+ - Ruby 2.3.1 on Rails 5 (upgraded from Ruby 2.3.0 and Rails 4.2)
+ - PostgreSQL
+ - RSpec x Capybara
+ - AWS S3 (picture storage)
+ - Misc. gems such as `kaminari`, `sorcery`, `simple_form`, `paperclip`, etc.
+
+Depolyed at [flashcards-mkdev.heroku.com](Heroku)
 
 ### To try it out:
 
@@ -14,7 +25,7 @@ You would need
  - imagemagick (you can get it by running `brew install imagemagick`)
  - any fresh PostgreSQL
 
-### To set it up
+### To set it up:
 
 1. `git clone` the repo to your local machine
 2. `rake secret` to get tokens for your `secret.rb`
@@ -24,3 +35,4 @@ You would need
 6. Run `rake db:setup` to migrate the db and fill it in with test data.
 7. Sign up (login) with your credentials or Twitter and run `rake tossup`
 8. It's all set! Good luck learning languages!
+

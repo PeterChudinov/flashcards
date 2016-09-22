@@ -6,9 +6,9 @@ class TrainerController < ApplicationController
     result = @card.check_answer?(params[:response])
     if result
       @card.touch_review_date!
-      flash[:notice] = "Верно!"
+      flash[:notice] = "LOCALE_TRAINER_SUCCESS!"
     else
-      flash[:notice] = "Неверно, надо '#{@card.original_text}'"
+      flash[:notice] = "LOCALE_TRAINER_FAILURE_SHOULD_BE '#{@card.original_text}'"
     end
     redirect_to root_path
   end
